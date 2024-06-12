@@ -1,0 +1,813 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../task2/">
+      
+      
+        <link rel="next" href="../task4/">
+      
+      <link rel="icon" href="../pic/dcloud_logo.png">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.1.6">
+    
+    
+      
+        <title>Task 3 - Enable Migration Mode on Edge Routers - Cisco SD-WAN Multi-Region Fabric (MRF) Migration Lab</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.ded33207.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.a0c5b2b5.min.css">
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="" data-md-color-accent="">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#step-1-create-new-systen-feature-template-for-west-edge-devices" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Cisco SD-WAN Multi-Region Fabric (MRF) Migration Lab" class="md-header__button md-logo" aria-label="Cisco SD-WAN Multi-Region Fabric (MRF) Migration Lab" data-md-component="logo">
+      
+  <img src="../pic/dcloud_logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Cisco SD-WAN Multi-Region Fabric (MRF) Migration Lab
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Task 3 - Enable Migration Mode on Edge Routers
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../about/" class="md-tabs__link">
+        Lab Overview
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../access/" class="md-tabs__link">
+      Lab Crendential
+    </a>
+  </li>
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../task1/" class="md-tabs__link md-tabs__link--active">
+        Lab Guide
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Cisco SD-WAN Multi-Region Fabric (MRF) Migration Lab" class="md-nav__button md-logo" aria-label="Cisco SD-WAN Multi-Region Fabric (MRF) Migration Lab" data-md-component="logo">
+      
+  <img src="../pic/dcloud_logo.png" alt="logo">
+
+    </a>
+    Cisco SD-WAN Multi-Region Fabric (MRF) Migration Lab
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="0">
+          Lab Overview
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_1">
+          <span class="md-nav__icon md-icon"></span>
+          Lab Overview
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../about/" class="md-nav__link">
+        About The Lab
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../topology/" class="md-nav__link">
+        Lab Topology
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../access/" class="md-nav__link">
+        Lab Crendential
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+          Lab Guide
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Lab Guide
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../task1/" class="md-nav__link">
+        Task 1 - Explore Flat Fabric Policy
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../task2/" class="md-nav__link">
+        Task 2 - Prepare MRF Migration
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Task 3 - Enable Migration Mode on Edge Routers
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Task 3 - Enable Migration Mode on Edge Routers
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#step-1-create-new-systen-feature-template-for-west-edge-devices" class="md-nav__link">
+    Step 1: Create new Systen Feature Template for West Edge Devices
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-2-assign-feature-template-to-west-edge-devices" class="md-nav__link">
+    Step 2: Assign Feature Template to West Edge Devices
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-3-create-new-systen-feature-template-for-east-edge-devices" class="md-nav__link">
+    Step 3: Create new Systen Feature Template for East Edge Devices
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-4-assign-feature-template-to-east-edge-devices" class="md-nav__link">
+    Step 4: Assign Feature Template to East Edge Devices
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-5-validate-defaultflat-controller" class="md-nav__link">
+    Step 5: Validate default/flat Controller
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../task4/" class="md-nav__link">
+        Task 4 - Enable MRF on Border Routers
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../task5/" class="md-nav__link">
+        Task 5 - Enable MRF on Edge Routers
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../task6/" class="md-nav__link">
+        Task 6 - MRF Migration Clean Up
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../task7/" class="md-nav__link">
+        Task 7 - MRF Secondary Region
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../task8/" class="md-nav__link">
+        Task 8 - MRF Central Policy
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#step-1-create-new-systen-feature-template-for-west-edge-devices" class="md-nav__link">
+    Step 1: Create new Systen Feature Template for West Edge Devices
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-2-assign-feature-template-to-west-edge-devices" class="md-nav__link">
+    Step 2: Assign Feature Template to West Edge Devices
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-3-create-new-systen-feature-template-for-east-edge-devices" class="md-nav__link">
+    Step 3: Create new Systen Feature Template for East Edge Devices
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-4-assign-feature-template-to-east-edge-devices" class="md-nav__link">
+    Step 4: Assign Feature Template to East Edge Devices
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-5-validate-defaultflat-controller" class="md-nav__link">
+    Step 5: Validate default/flat Controller
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  <h1>Task 3 - Enable Migration Mode on Edge Routers</h1>
+
+<p>Enabling Migration Mode allows WAN Edges to participate in regional controllers while maintaining their current OMP peers with the default controllers. This must be enabled on all WAN Edges before the MRF migration.  </p>
+<p>In this task, you will enable Migration Mode on all Edge Routers for Site 1010, Site 1020, Site 3000, Site 4000, Site 5000, Site 6000, and Site 7000. In the next task, you will enable Migration Mode on all Border Routers.  </p>
+<h3 id="step-1-create-new-systen-feature-template-for-west-edge-devices"><strong>Step 1: Create new Systen Feature Template for West Edge Devices</strong></h3>
+<ul>
+<li>Go to <strong>Configuration &gt; Templates &gt; Feature templates &gt; Add Template</strong>, select C8000v and Cisco System.</li>
+</ul>
+<p><img alt="" src="../pic/task3-1-1.png" /></p>
+<ul>
+<li>
+<p>Name it as <strong>cEDGE_EDGE-WEST_SYSTEM_FT</strong> and define only the next parameters as follows:</p>
+<ul>
+<li>Location: “Device Specific”</li>
+<li>Console Baud Rate: 115200</li>
+<li>Role: Edge Router</li>
+<li>Enable Migration Mode to Multi-Region Fabric: Enable</li>
+<li>Latitude: “Device Specific”</li>
+<li>Longitude: “Device Specific”</li>
+</ul>
+</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Location, Console Baud Rate, Latitude and Longitude parameters are not mandatory for MRF, however we define them for lab consistency.</p>
+</div>
+<p><img alt="" src="../pic/task3-1-2.png" /></p>
+<h3 id="step-2-assign-feature-template-to-west-edge-devices"><strong>Step 2: Assign Feature Template to West Edge Devices</strong></h3>
+<p>Assign the System Feature template named <strong>cEDGE_EDGE-WEST_SYSTEM_FT</strong>, created in previouse step, to all West sites and the corresponding Device Templates, which are:</p>
+<ul>
+<li><strong>cEDGE_DC_DT</strong> </li>
+<li><strong>cEDGE_SITE-3000_DT</strong></li>
+<li><strong>cEDGE_SITE-4000_DT</strong></li>
+<li><strong>cEDGE_SITE-5000_DT</strong></li>
+</ul>
+<p><img alt="" src="../pic/task3-2-1.png" /></p>
+<ul>
+<li>The lab guide below shows the steps for <strong>cEDGE_DC_DT</strong> Device Template, and you need to repeat the steps for all other West Sites's device templates mentioned above.  </li>
+<li>Click on the 3 dots and then ‘edit’.</li>
+</ul>
+<p><img alt="" src="../pic/task3-2-2.png" /></p>
+<ul>
+<li>Next in ‘Cisco System’ select the <strong>cEDGE_EDGE-WEST_SYSTEM_FT</strong>.</li>
+</ul>
+<p><img alt="" src="../pic/task3-2-3.png" /></p>
+<ul>
+<li>Click ‘Update’ and you should see the next screen with all 4 DC devices with a little green checkmark.</li>
+</ul>
+<p><img alt="" src="../pic/task3-2-4.png" /></p>
+<ul>
+<li>Click ‘Next’ and should see the next configuration being applied to all 4 DC devices. </li>
+</ul>
+<p><img alt="" src="../pic/task3-2-5.png" /></p>
+<ul>
+<li>Finally click ‘Configure Devices’ to push the new configuration.</li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Repeat the above steps to apply the same new feature template to <strong>cEDGE_SITE-3000_DT</strong>, <strong>cEDGE_SITE-4000_DT</strong> and <strong>cEDGE_SITE-5000_DT</strong>.</p>
+</div>
+<h3 id="step-3-create-new-systen-feature-template-for-east-edge-devices"><strong>Step 3: Create new Systen Feature Template for East Edge Devices</strong></h3>
+<ul>
+<li>Go to <strong>Configuration &gt; Templates &gt; Feature templates &gt; Add Template</strong>, select C8000v and Cisco System.</li>
+</ul>
+<p><img alt="" src="../pic/task3-4-1.png" /></p>
+<ul>
+<li>
+<p>Name it as <strong>cEDGE_EDGE-EAST_SYSTEM_FT</strong> and define only the next parameters as follows:</p>
+<ul>
+<li>Location: “Device Specific”</li>
+<li>Console Baud Rate: 115200</li>
+<li>Role: Edge Router</li>
+<li>Enable Migration Mode to Multi-Region Fabric: Enable</li>
+<li>Latitude: “Device Specific”</li>
+<li>Longitude: “Device Specific”</li>
+</ul>
+</li>
+</ul>
+<p><img alt="" src="../pic/task3-4-2.png" />
+<img alt="" src="../pic/task3-4-3b.png" /></p>
+<p>Click 'Save'.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Location, Console Baud Rate, Latitude and Longitude parameters are not mandatory for MRF, however we define them for lab consistency.</p>
+</div>
+<h3 id="step-4-assign-feature-template-to-east-edge-devices"><strong>Step 4: Assign Feature Template to East Edge Devices</strong></h3>
+<p>Assign the System Feature template named <strong>cEDGE_EDGE-EAST_SYSTEM_FT</strong>, created in previouse step, to all East sites and the corresponding Device Templates, which are:</p>
+<ul>
+<li><strong>cEDGE_SITE-6000_DT</strong> </li>
+<li><strong>cEDGE_SITE-7000_DT</strong></li>
+</ul>
+<p><img alt="" src="../pic/task3-5-1.png" /></p>
+<ul>
+<li>The lab guide below shows the steps for <strong>cEDGE_SITE-6000_DT</strong> Device Template, and you need to repeat the steps for the other East Sites's device templates <strong>cEDGE_SITE-7000_DT</strong>.  </li>
+<li>Click on the 3 dots and then ‘edit’.</li>
+</ul>
+<p><img alt="" src="../pic/task3-5-2.png" /></p>
+<ul>
+<li>Next in Cisco System select the <strong>cEDGE_EDGE-EAST_SYSTEM_FT</strong></li>
+</ul>
+<p><img alt="" src="../pic/task3-5-3.png" /></p>
+<ul>
+<li>Click ‘Next’ and should see the next configuration being applied to the <strong>EDGE-BRANCH-6-01 (1.1.60.1)</strong>.  </li>
+<li>Finally click ‘Configure Devices’ to push the new configuration.</li>
+</ul>
+<p><img alt="" src="../pic/task3-5-4.png" /></p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Repeat the above steps to apply the same new feature template to <strong>cEDGE_SITE-7000_DT</strong>.  </p>
+</div>
+<h3 id="step-5-validate-defaultflat-controller"><strong>Step 5: Validate default/flat Controller</strong></h3>
+<p>You have enabled Migration Mode on all Edge Routers, but since you have not assigned region for reach Edge Router yet, the Edge Router will only peer with default/flat controller.  </p>
+<ul>
+<li>
+<p>Now in Manager UI, go to <strong>Monitor &gt; Devices &gt; EDGE-BRANCH-3-01 &gt; Real Time</strong> and look up for <strong>OMP Peers</strong> in the search bar.</p>
+</li>
+<li>
+<p>As you can see the <strong>EDGE-BRANCH-3-01</strong> has only one OMP peer, which is with <strong>Controller-4 (1.1.1.6)</strong> serving as default/flat Controller for the entire overlay. Note that the <strong>Region ID</strong> is ‘None’; this will change in Task 5.</p>
+</li>
+</ul>
+<p><img alt="" src="../pic/task3-3-1.png" />  </p>
+<ul>
+<li>Verify <strong>OMP Peers</strong> from Edge Routers in EAST region and you will see only one OMP peer with the deault/flat controller.  </li>
+</ul>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            Back to top
+          </button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../task2/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Task 2 - Prepare MRF Migration" rel="prev">
+            <div class="md-footer__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Task 2 - Prepare MRF Migration
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../task4/" class="md-footer__link md-footer__link--next" aria-label="Next: Task 4 - Enable MRF on Border Routers" rel="next">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Task 4 - Enable MRF on Border Routers
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.top", "navigation.tabs", "navigation.path", "navigation.footer", "content.code.annotate"], "search": "../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.51198bba.min.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,1023 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../task6/">
+      
+      
+        <link rel="next" href="../task8/">
+      
+      <link rel="icon" href="../pic/dcloud_logo.png">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.1.6">
+    
+    
+      
+        <title>Task 7 - MRF Secondary Region - Cisco SD-WAN Multi-Region Fabric (MRF) Migration Lab</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.ded33207.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.a0c5b2b5.min.css">
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="" data-md-color-accent="">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#step-1-create-secondary-region" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Cisco SD-WAN Multi-Region Fabric (MRF) Migration Lab" class="md-header__button md-logo" aria-label="Cisco SD-WAN Multi-Region Fabric (MRF) Migration Lab" data-md-component="logo">
+      
+  <img src="../pic/dcloud_logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Cisco SD-WAN Multi-Region Fabric (MRF) Migration Lab
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Task 7 - MRF Secondary Region
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../about/" class="md-tabs__link">
+        Lab Overview
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../access/" class="md-tabs__link">
+      Lab Crendential
+    </a>
+  </li>
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../task1/" class="md-tabs__link md-tabs__link--active">
+        Lab Guide
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Cisco SD-WAN Multi-Region Fabric (MRF) Migration Lab" class="md-nav__button md-logo" aria-label="Cisco SD-WAN Multi-Region Fabric (MRF) Migration Lab" data-md-component="logo">
+      
+  <img src="../pic/dcloud_logo.png" alt="logo">
+
+    </a>
+    Cisco SD-WAN Multi-Region Fabric (MRF) Migration Lab
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="0">
+          Lab Overview
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_1">
+          <span class="md-nav__icon md-icon"></span>
+          Lab Overview
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../about/" class="md-nav__link">
+        About The Lab
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../topology/" class="md-nav__link">
+        Lab Topology
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../access/" class="md-nav__link">
+        Lab Crendential
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+          Lab Guide
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Lab Guide
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../task1/" class="md-nav__link">
+        Task 1 - Explore Flat Fabric Policy
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../task2/" class="md-nav__link">
+        Task 2 - Prepare MRF Migration
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../task3/" class="md-nav__link">
+        Task 3 - Enable Migration Mode on Edge Routers
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../task4/" class="md-nav__link">
+        Task 4 - Enable MRF on Border Routers
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../task5/" class="md-nav__link">
+        Task 5 - Enable MRF on Edge Routers
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../task6/" class="md-nav__link">
+        Task 6 - MRF Migration Clean Up
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Task 7 - MRF Secondary Region
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Task 7 - MRF Secondary Region
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#step-1-create-secondary-region" class="md-nav__link">
+    Step 1: Create Secondary Region
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-2-create-transport-interface-feature-templates-with-secondary-region" class="md-nav__link">
+    Step 2: Create Transport Interface Feature Templates with Secondary Region
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-3-create-an-omp-feature-template-to-influenciate-the-omp-best-path-algorithm" class="md-nav__link">
+    Step 3: Create an OMP Feature Template to influenciate the OMP Best Path Algorithm
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-4-enable-secondary-region-for-site-5000" class="md-nav__link">
+    Step 4: Enable Secondary Region for Site 5000
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-5-enable-secondary-region-for-site-6000-and-7000" class="md-nav__link">
+    Step 5: Enable Secondary Region for Site 6000 and 7000
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-6-make-controller-3-secondary-region-aware-and-validate" class="md-nav__link">
+    Step 6: Make Controller-3 Secondary Region-aware and Validate
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../task8/" class="md-nav__link">
+        Task 8 - MRF Central Policy
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#step-1-create-secondary-region" class="md-nav__link">
+    Step 1: Create Secondary Region
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-2-create-transport-interface-feature-templates-with-secondary-region" class="md-nav__link">
+    Step 2: Create Transport Interface Feature Templates with Secondary Region
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-3-create-an-omp-feature-template-to-influenciate-the-omp-best-path-algorithm" class="md-nav__link">
+    Step 3: Create an OMP Feature Template to influenciate the OMP Best Path Algorithm
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-4-enable-secondary-region-for-site-5000" class="md-nav__link">
+    Step 4: Enable Secondary Region for Site 5000
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-5-enable-secondary-region-for-site-6000-and-7000" class="md-nav__link">
+    Step 5: Enable Secondary Region for Site 6000 and 7000
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-6-make-controller-3-secondary-region-aware-and-validate" class="md-nav__link">
+    Step 6: Make Controller-3 Secondary Region-aware and Validate
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  <h1>Task 7 - MRF Secondary Region</h1>
+
+<p>The Secondary Region is a feature within Multi-Region Fabric that provides a direct path between sites in different regions. Depending on the requirements, this path over 2nd region can serve as primary path between sites in different regions, or backup path or ECMP.  </p>
+<p>In this task you will create a Secondary Region between the <strong>West Site 5000</strong> and the <strong>East Sites 6000</strong> and <strong>7000</strong> as shown in the diagram below.</p>
+<p><img alt="" src="../pic/task7-0-1.png" /> </p>
+<ul>
+<li>First, RDP into the Ubuntu <strong>Site-5000-VPN-10-Ubun</strong> host in <strong>Site 5000</strong> using the <strong>mRemoteNG</strong> client and the ping and trace the IP <strong>10.60.1.101</strong> that lives in <strong>Site 6000</strong>.</li>
+</ul>
+<p><img alt="" src="../pic/task7-0-2.png" /> </p>
+<p>As you can see, it is reachable through the Fabric in the Core now.</p>
+<h3 id="step-1-create-secondary-region"><strong>Step 1: Create Secondary Region</strong></h3>
+<ul>
+<li>Go to <strong>Configuration &gt; Network Hierarchy</strong> and in Global click on <strong>...</strong> and select ‘Add Node’.</li>
+</ul>
+<p><img alt="" src="../pic/task7-1-1.png" /> </p>
+<ul>
+<li>Select the <strong>Region</strong> Type and name it as <strong>SECONDARY-REGION</strong></li>
+</ul>
+<p><img alt="" src="../pic/task7-1-2.png" /> </p>
+<ul>
+<li>Click <strong>Add</strong>.  </li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>As with the primary West and East Region, now this Secondary region has been assigned with the Region ID 3 automatically by the system.</p>
+</div>
+<h3 id="step-2-create-transport-interface-feature-templates-with-secondary-region"><strong>Step 2: Create Transport Interface Feature Templates with Secondary Region</strong></h3>
+<p>As you can see from the diagram above, the 2nd region will be enabled over both Piblic-Internet and MPLS transports. In this step, you will build two new feature templates for both transport interfaces with 2nd region enabled.  </p>
+<ul>
+<li>Go to <strong>Configuration &gt; Templates &gt; Feature Templates</strong> and look up for the existing <strong>cEDGE_SITE-ALL_VPN-0_PUB-INET_IF_FT</strong> feature template and click 'Copy' to clone it.</li>
+</ul>
+<p><img alt="" src="../pic/task7-2-1.png" /> </p>
+<ul>
+<li>Name it as <strong>cEDGE_SITE-PRI_AND_SEC-REGIONS_VPN-0_PUB-INET_IF_FT</strong> and click ‘Copy’</li>
+</ul>
+<p><img alt="" src="../pic/task7-2-2.png" /> </p>
+<ul>
+<li>Now, look up for the template you just created <strong>cEDGE_SITE-PRI_AND_SEC-REGIONS_VPN-0_PUB-INET_IF_FT</strong> and edit it.</li>
+</ul>
+<p><img alt="" src="../pic/task7-2-3.png" /> </p>
+<ul>
+<li>Go to the <strong>Tunnel</strong> section and under  <strong>‘Advanced Options’</strong>, enable ‘Secondary Region’ as <strong>Shared Between Primary and Secondary Regions</strong> and click ‘update’.</li>
+</ul>
+<p><img alt="" src="../pic/task7-2-4.png" /> </p>
+<ul>
+<li>
+<p>Click 'Update'.</p>
+</li>
+<li>
+<p>Go to <strong>Configuration &gt; Templates &gt; Feature</strong> and look up for the existing <strong>cEDGE_SITE-ALL_VPN-0_MPLS_IF_FT</strong> feature template to clone it.</p>
+</li>
+</ul>
+<p><img alt="" src="../pic/task7-2-5.png" /> </p>
+<ul>
+<li>Name it as <strong>cEDGE_SITE-PRI_AND_SEC_REGIONS_VPN-0_MPLS_IF_FT</strong></li>
+</ul>
+<p><img alt="" src="../pic/task7-2-6.png" /> </p>
+<ul>
+<li>
+<p>Click ‘Copy’.</p>
+</li>
+<li>
+<p>Now, look up again for the template you just created <strong>cEDGE_SITE-PRI_AND_SEC_REGIONS_VPN-0_MPLS_IF_FT</strong> and edit it.</p>
+</li>
+</ul>
+<p><img alt="" src="../pic/task7-2-8.png" /> </p>
+<ul>
+<li>Define the <strong>Interface Name</strong> as a variable (this because it will be used for Site7000 that uses a different interface for the MPLS TLOC).</li>
+</ul>
+<p><img alt="" src="../pic/task7-2-9.png" /> </p>
+<ul>
+<li>Go to the <strong>‘Tunnel’</strong> section and under <strong>‘Advanced Options’</strong>, enable ‘Secondary Region’ as <strong>Shared Between Primary and Secondary Regions</strong></li>
+</ul>
+<p><img alt="" src="../pic/task7-2-10.png" /> </p>
+<ul>
+<li>Click 'Update'.</li>
+</ul>
+<h3 id="step-3-create-an-omp-feature-template-to-influenciate-the-omp-best-path-algorithm"><strong>Step 3: Create an OMP Feature Template to influenciate the OMP Best Path Algorithm</strong></h3>
+<p>By default, the path over 2nd region is prefered <strong>shorter path</strong>, because it provides the direct path for sites in different region. In this step, you will change this default behavior to allow equal cost multi path over direct path and core region path.  </p>
+<ul>
+<li>
+<p>Go to <strong>Configuration &gt; Templates &gt; Feature</strong> and let’s copy now the existing <strong>cEDGE_ALL_OMP_FT</strong> feature template. </p>
+</li>
+<li>
+<p>Name it as <strong>cEDGE_OMP_PRI_AND_SEC_REGIONS_FT</strong></p>
+</li>
+</ul>
+<p><img alt="" src="../pic/task7-3-1.png" /></p>
+<ul>
+<li>
+<p>Click ‘Copy’.</p>
+</li>
+<li>
+<p>Once created it look up for <strong>cEDGE_OMP_PRI_AND_SEC_REGIONS_FT</strong> and edit it.</p>
+</li>
+</ul>
+<p><img alt="" src="../pic/task7-3-2.png" /></p>
+<ul>
+<li>Go to the ‘Best Path’ section, and make Global on to enable the <strong>Ignore Region-Path Length During Best-Path Algorithm</strong> parameter, then click ‘update’. </li>
+</ul>
+<p><img alt="" src="../pic/task7-3-3.png" /></p>
+<ul>
+<li>Click 'Update'.  </li>
+</ul>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>The default value is Off, and by default, OMP gives preference to a direct tunnel path over a hierarchical path because the direct path has fewer hops.  </p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>With this configuration, we disable the comparison of the number of hops, OMP applies equal-cost multi-path routing (ECMP) to all routes, and packets can use all available paths.</strong>  </p>
+</div>
+<h3 id="step-4-enable-secondary-region-for-site-5000"><strong>Step 4: Enable Secondary Region for Site 5000</strong></h3>
+<p>In this step, you will update the device templates and enable Secondary Region on Site 5000.</p>
+<ul>
+<li>
+<p>Modify the <strong>Cisco System</strong> Feature template currently used by the <strong>Site 5000</strong> edge router to participate in the secondary.  </p>
+</li>
+<li>
+<p>Go <strong>Configuration &gt; Templates &gt; Feature</strong> and look up for the <strong>cEDGE_EDGE-WEST_SYSTEM_FT</strong> and click <strong>‘Copy’</strong>  </p>
+</li>
+<li>
+<p>Name it as <strong>cEDGE_PRI_AND_SEC_REGIONS-WEST_SYSTEM_FT</strong>.  </p>
+</li>
+</ul>
+<p><img alt="" src="../pic/task7-4-1.png" /></p>
+<ul>
+<li>Click ‘Copy’.  </li>
+</ul>
+<p><img alt="" src="../pic/task7-4-2.png" /></p>
+<ul>
+<li>Look up for the <strong>cEDGE_PRI_AND_SEC_REGIONS-WEST_SYSTEM_FT</strong> feature template you just created and click ‘Edit’  </li>
+</ul>
+<p><img alt="" src="../pic/task7-4-3.png" /></p>
+<ul>
+<li>Make Global on the ‘Secondary Region’ parameter and select <strong>SECONDARY-REGION</strong> from the dropdown menu.</li>
+</ul>
+<p><img alt="" src="../pic/task7-4-4.png" /></p>
+<ul>
+<li>
+<p>Click ‘Update’ to save the changes.</p>
+</li>
+<li>
+<p>Go to <strong>Configuration &gt; Templates &gt; Device Templates</strong> look up for the <strong>cEDGE_SITE-5000_DT</strong> device template and edit it.  </p>
+</li>
+</ul>
+<p><img alt="" src="../pic/task7-5-1.png" /></p>
+<ul>
+<li>In the ‘Cisco System’ section, select the feature template we previously created named <strong>cEDGE_PRI_AND_SEC_REGIONS-WEST_SYSTEM_FT</strong></li>
+</ul>
+<p><img alt="" src="../pic/task7-5-2.png" /></p>
+<ul>
+<li>Under the ‘Cisco OMP’ section, select the <strong>cEDGE_OMP_PRI_AND_SEC_REGIONS_FT</strong> feature template we created in step 3.  </li>
+</ul>
+<p><img alt="" src="../pic/task7-5-3.png" /></p>
+<ul>
+<li>Under the ‘Transport &amp; Management VPN’ section, change the two Cisco VPN Interface Ethernet feature templates to the ones created in step 1 named <strong>cEDGE_SITE-PRI_AND_SEC-REGIONS_VPN-0_PUB-INET_IF_FT</strong> and <strong>cEDGE_SITE-PRI_AND_SEC_REGIONS_VPN-0_MPLS_IF_FT</strong> respectively.</li>
+</ul>
+<p><img alt="" src="../pic/task7-5-4.png" /></p>
+<ul>
+<li>Finally, click ‘Update’, and fill out the two new variables with <strong>GigabitEthernet2</strong> and <strong>10.2.11.2/24</strong> as shown below. </li>
+</ul>
+<p><img alt="" src="../pic/task7-5-6.png" /></p>
+<ul>
+<li>Click ‘Update’ and you should see in the ‘Config Diff’ section all the next lines in green color being pushed to the device if you scroll down. </li>
+</ul>
+<p><img alt="" src="../pic/task7-5-7.png" />
+<img alt="" src="../pic/task7-5-8.png" />
+<img alt="" src="../pic/task7-5-9.png" />
+<img alt="" src="../pic/task7-5-10.png" /></p>
+<ul>
+<li>After compare the diff, click ‘Configure Devices’ to push configuration.  </li>
+</ul>
+<h3 id="step-5-enable-secondary-region-for-site-6000-and-7000"><strong>Step 5: Enable Secondary Region for Site 6000 and 7000</strong></h3>
+<p>In this step, you will update the device templates and enable Secondary Region on Site 6000 and site 7000. Again, for simplicity, let’s copy the ‘System’ Feature template currently used by the <strong>Site 6000</strong> and <strong>site 7000</strong> to participate in the secondary.  </p>
+<ul>
+<li>Go to <strong>Configuration &gt; Templates &gt; Feature</strong>; look up for the <strong>cEDGE_EDGE-EAST_SYSTEM_FT</strong> and click ‘Copy’.</li>
+</ul>
+<p><img alt="" src="../pic/task7-6-1.png" /></p>
+<ul>
+<li>Name it  <strong>cEDGE_PRI_AND_SEC_REGIONS-EAST_SYSTEM_FT</strong></li>
+</ul>
+<p><img alt="" src="../pic/task7-6-2.png" /></p>
+<ul>
+<li>Look up for <strong>cEDGE_PRI_AND_SEC_REGIONS-EAST_SYSTEM_FT</strong> feature template you just created and click ‘Edit’.</li>
+</ul>
+<p><img alt="" src="../pic/task7-6-3.png" /></p>
+<ul>
+<li>Make <strong>Global</strong> on the ‘Secondary Region’ parameter and select <strong>SECONDARY-REGION</strong> from the dropdown menu.</li>
+</ul>
+<p><img alt="" src="../pic/task7-6-4.png" /></p>
+<ul>
+<li>
+<p>Click ‘Update’.</p>
+</li>
+<li>
+<p>Update device template for Site 6000  </p>
+</li>
+<li>
+<p>Go to <strong>Configuration &gt; Templates &gt; Device Templates</strong>; look up for the <strong>cEDGE_SITE-6000_DT</strong> device template and edit it.</p>
+</li>
+</ul>
+<p><img alt="" src="../pic/task7-7-1.png" /></p>
+<ul>
+<li>Under ‘Cisco System' section select the feature template <strong>cEDGE_PRI_AND_SEC_REGIONS-EAST_SYSTEM_FT</strong>.</li>
+</ul>
+<p><img alt="" src="../pic/task7-7-2.png" /></p>
+<ul>
+<li>Under ‘Cisco OMP’ section, select the <strong>cEDGE_OMP_PRI_AND_SEC_REGIONS_FT</strong> feature template. </li>
+</ul>
+<p><img alt="" src="../pic/task7-7-3.png" /></p>
+<ul>
+<li>Under the ‘Transport &amp; Management VPN’ section, change the two Cisco VPN Interface Ethernet feature templates to the ones created in step 2 named <strong>cEDGE_SITE-PRI_AND_SEC-REGIONS_VPN-0_PUB-INET_IF_FT</strong></li>
+</ul>
+<p><img alt="" src="../pic/task7-7-4.png" /></p>
+<ul>
+<li>
+<p>Click ‘Update’, then ‘Next’.</p>
+</li>
+<li>
+<p>You should see the all the next lines in green color in the ‘Config Diff’ being pushed to the device if you scroll down.  </p>
+</li>
+</ul>
+<p><img alt="" src="../pic/task7-7-5.png" />
+<img alt="" src="../pic/task7-7-6.png" />
+<img alt="" src="../pic/task7-7-7.png" /></p>
+<ul>
+<li>
+<p>Click ‘Configure Devices’ to push the configuration after compare the diff.  </p>
+</li>
+<li>
+<p>Let’s repeat the same process to update device template for <strong>Site 7000</strong>.  </p>
+</li>
+<li>
+<p>Go to <strong>Configuration &gt; Templates &gt; Device Templates</strong>; look up for the <strong>cEDGE_SITE-7000_DT</strong> device template and edit.</p>
+</li>
+</ul>
+<p><img alt="" src="../pic/task7-8-1.png" /></p>
+<ul>
+<li>Under ‘Cisco System’ section select the <strong>cEDGE_PRI_AND_SEC_REGIONS-EAST_SYSTEM_FT</strong> feature template.</li>
+</ul>
+<p><img alt="" src="../pic/task7-8-2.png" /></p>
+<ul>
+<li>Under the ‘Cisco OMP’ section, select the <strong>cEDGE_OMP_PRI_AND_SEC_REGIONS_FT</strong> feature template.</li>
+</ul>
+<p><img alt="" src="../pic/task7-8-3.png" /></p>
+<ul>
+<li>Under the ‘Transport &amp; Management VPN’ section, change the two Cisco VPN Interface Ethernet feature templates to the ones created in step 2 named <strong>cEDGE_SITE-PRI_AND_SEC_REGIONS_VPN-0_MPLS_IF_FT</strong>.</li>
+</ul>
+<p><img alt="" src="../pic/task7-8-4.png" /></p>
+<ul>
+<li>Click ‘Update’, and fill out the two new variables with <strong>GigabitEthernet1</strong> and <strong>10.2.12.2/24</strong> as shown below.</li>
+</ul>
+<p><img alt="" src="../pic/task7-8-5.png" /></p>
+<ul>
+<li>Click ‘Update’ and you should see in the ‘Config Diff’ section all the next lines in green color being pushed to the device if you scroll down. </li>
+</ul>
+<p><img alt="" src="../pic/task7-8-6.png" />
+<img alt="" src="../pic/task7-8-7.png" />
+<img alt="" src="../pic/task7-8-8.png" /></p>
+<ul>
+<li>After compare the diff, click ‘Configure Devices’ to push configuration.</li>
+</ul>
+<h3 id="step-6-make-controller-3-secondary-region-aware-and-validate"><strong>Step 6: Make Controller-3 Secondary Region-aware and Validate</strong></h3>
+<p>Sites <strong>Site 5000</strong>, <strong>Site 6000</strong> and <strong>Site 7000</strong> have been configured to participate in the <strong>SECONDARY-REGION (3)</strong>. However there is no controller for secondary region yet.  </p>
+<p>In this step, you will configure <strong>Controller-3 (1.1.1.5)</strong> for secondary region.  </p>
+<ul>
+<li>Go to <strong>Configuration &gt; Templates &gt; Feature Templates</strong> and look up for the <strong>CONTROLLER-3_SYSTEM_FT</strong> feature template and edit it.</li>
+</ul>
+<p><img alt="" src="../pic/task7-9-1.png" /></p>
+<ul>
+<li>In the ‘Region ID List’ parameter, add the <strong>SECONDARY-REGION</strong> to serve this region besides the Core Region.</li>
+</ul>
+<p><img alt="" src="../pic/task7-9-2.png" /></p>
+<ul>
+<li>Click ‘Update’, then ‘Next’ and you should see the next in the ‘Config Diff’.</li>
+</ul>
+<p><img alt="" src="../pic/task7-9-3.png" /></p>
+<ul>
+<li>Click ‘Configure Devices’ to push the configuration.  </li>
+</ul>
+<p>Now, Site 5000 has connectivity to Site 6000 and Site 7000, and vice versa, through the Core Fabric and the Direct Path over the secondary region.</p>
+<p>Because you enabled ‘Ignore Region-Path Length During Best-Path Algorithm’ on the new OMP template in step 1, the system uses ECMP over all available paths, including the direct path and the path over the core region. This is beneficial in use cases where the requirement is to send non-critical traffic using lower-cost WAN links instead of the optimized middle-mile WAN or PAYG links in the core region.  </p>
+<ul>
+<li>
+<p>Let's verify this from SDWAN manager.  </p>
+</li>
+<li>
+<p>Go to <strong>Monitor &gt; Devices &gt; EDGE-BRANCH-5-01</strong>  </p>
+</li>
+</ul>
+<p><img alt="" src="../pic/task7-9-6.png" />  </p>
+<ul>
+<li>Select <strong>Troubleshooting</strong> from the navigation panel on the left and then select <strong>Simulate Flows</strong>  </li>
+</ul>
+<p><img alt="" src="../pic/task7-9-7.png" />  </p>
+<ul>
+<li>In the <strong>Simulate Flows</strong> window, enter the following parameters for simulated flow.  <ul>
+<li>VPN : <strong>VPN- 10</strong></li>
+<li>Source/Interface for VPN - 10: <strong>GigabitEthernet3</strong>  </li>
+<li>Source IP: <strong>10.50.1.129</strong>  </li>
+<li>Destination IP: <strong>10.60.1.101</strong>  </li>
+</ul>
+</li>
+<li>Click <strong>Simulate</strong>, and you should see output similar to the screenshot below. </li>
+</ul>
+<p><img alt="" src="../pic/task7-9-8.png" />  </p>
+<ul>
+<li>
+<p>As you can see the output from simulated flow, there are multiple paths available from site 5000 to site 6000. You can try different IPs in site 6000 and or site 7000 and see what is the output.  </p>
+</li>
+<li>
+<p>We can also confirm this from CLI.  </p>
+</li>
+<li>Go to the mRemoteNG client and SSH into the <strong>EDGE-BRANCH-5-01</strong> and then issue the command <strong>show ip route vrf 10</strong>.</li>
+</ul>
+<p><img alt="" src="../pic/task7-9-4.png" /></p>
+<ul>
+<li>As we can see from the output, all prefixes from the <strong>East Region</strong> have <strong>3 TLOCs IP</strong> pointing to, two being through the <strong>West Border routers</strong>, and one being the <strong>Originator TLOC IP</strong> for the direct path.  </li>
+</ul>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            Back to top
+          </button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../task6/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Task 6 - MRF Migration Clean Up" rel="prev">
+            <div class="md-footer__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Task 6 - MRF Migration Clean Up
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../task8/" class="md-footer__link md-footer__link--next" aria-label="Next: Task 8 - MRF Central Policy" rel="next">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Task 8 - MRF Central Policy
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.top", "navigation.tabs", "navigation.path", "navigation.footer", "content.code.annotate"], "search": "../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.51198bba.min.js"></script>
+      
+    
+  </body>
+</html>

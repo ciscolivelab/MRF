@@ -1,0 +1,752 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../task1/">
+      
+      
+        <link rel="next" href="../task3/">
+      
+      <link rel="icon" href="../pic/dcloud_logo.png">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.1.6">
+    
+    
+      
+        <title>Task 2 - Prepare MRF Migration - Cisco SD-WAN Multi-Region Fabric (MRF) Migration Lab</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.ded33207.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.a0c5b2b5.min.css">
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="" data-md-color-accent="">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#step-1-enable-mrf" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Cisco SD-WAN Multi-Region Fabric (MRF) Migration Lab" class="md-header__button md-logo" aria-label="Cisco SD-WAN Multi-Region Fabric (MRF) Migration Lab" data-md-component="logo">
+      
+  <img src="../pic/dcloud_logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Cisco SD-WAN Multi-Region Fabric (MRF) Migration Lab
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Task 2 - Prepare MRF Migration
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../about/" class="md-tabs__link">
+        Lab Overview
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../access/" class="md-tabs__link">
+      Lab Crendential
+    </a>
+  </li>
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../task1/" class="md-tabs__link md-tabs__link--active">
+        Lab Guide
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Cisco SD-WAN Multi-Region Fabric (MRF) Migration Lab" class="md-nav__button md-logo" aria-label="Cisco SD-WAN Multi-Region Fabric (MRF) Migration Lab" data-md-component="logo">
+      
+  <img src="../pic/dcloud_logo.png" alt="logo">
+
+    </a>
+    Cisco SD-WAN Multi-Region Fabric (MRF) Migration Lab
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="0">
+          Lab Overview
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_1">
+          <span class="md-nav__icon md-icon"></span>
+          Lab Overview
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../about/" class="md-nav__link">
+        About The Lab
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../topology/" class="md-nav__link">
+        Lab Topology
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../access/" class="md-nav__link">
+        Lab Crendential
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+          Lab Guide
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Lab Guide
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../task1/" class="md-nav__link">
+        Task 1 - Explore Flat Fabric Policy
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Task 2 - Prepare MRF Migration
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Task 2 - Prepare MRF Migration
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#step-1-enable-mrf" class="md-nav__link">
+    Step 1: Enable MRF
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-2-create-regions" class="md-nav__link">
+    Step 2: Create Regions
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-3-provision-controllers-for-regions" class="md-nav__link">
+    Step 3: Provision Controllers for Regions
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../task3/" class="md-nav__link">
+        Task 3 - Enable Migration Mode on Edge Routers
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../task4/" class="md-nav__link">
+        Task 4 - Enable MRF on Border Routers
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../task5/" class="md-nav__link">
+        Task 5 - Enable MRF on Edge Routers
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../task6/" class="md-nav__link">
+        Task 6 - MRF Migration Clean Up
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../task7/" class="md-nav__link">
+        Task 7 - MRF Secondary Region
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../task8/" class="md-nav__link">
+        Task 8 - MRF Central Policy
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#step-1-enable-mrf" class="md-nav__link">
+    Step 1: Enable MRF
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-2-create-regions" class="md-nav__link">
+    Step 2: Create Regions
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-3-provision-controllers-for-regions" class="md-nav__link">
+    Step 3: Provision Controllers for Regions
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  <h1>Task 2 - Prepare MRF Migration</h1>
+
+<p>In this task, you will perform the following prerequisites before migrating from flat SD-WAN fabric to MRF.  </p>
+<ul>
+<li>Enable MRF  </li>
+<li>Creat regions  </li>
+<li>Provision Controllers for regions  </li>
+</ul>
+<h3 id="step-1-enable-mrf"><strong>Step 1: Enable MRF</strong></h3>
+<p>In this step, you will enable MRF on vManage.  </p>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p><strong>The MRF feature has been pre-enabled for this lab. This section is for your review of the workflow</strong> </p>
+</div>
+<ul>
+<li>Click SD-WAN Manager navagination bar, go to <strong>Administration &gt; Settings</strong>. and confirm that the Multi-Region Fabric setting is enabled (By default is disabled).  </li>
+</ul>
+<p><img alt="" src="../pic/task2-1-1.png" /></p>
+<h3 id="step-2-create-regions"><strong>Step 2: Create Regions</strong></h3>
+<p>After enabling MRF, the subsequent step involves creating the regions.<br />
+For this lab, we'll establish two regions: <strong>EAST-REGION </strong>and <strong>WEST-REGION</strong>. Upon creation, the system automatically assigns a Region ID.<br />
+In this lab, WEST-REGION has been assigned with Region ID 1, and EAST-REGION has been assigned Region ID 2.  </p>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>The Regioins has been pre-enabled for this lab. This section is for your review of the workflow  </p>
+</div>
+<ul>
+<li>Go to <strong>Configuration &gt; Network Hierarchy</strong> and you should see that the <strong>EAST-REGION and WEST-REGION </strong>have been pre-configured.  </li>
+</ul>
+<p><img alt="" src="../pic/task2-2-1.png" /></p>
+<h3 id="step-3-provision-controllers-for-regions"><strong>Step 3: Provision Controllers for Regions</strong></h3>
+<p>In MRF, vSmart controller is assigned to specific region. Based on the size of the deployment, the vSmart controller can be dedicated for a region or for a group of regions. For this lab, you will have controllers assigned as shown below:  </p>
+<ul>
+<li>Controller-1 (1.1.1.3) as dedicated Controller for WEST-REGION (1).  </li>
+<li>Controller-2 (1.1.1.4) as dedicated Controller for EAST-REGION (2).  </li>
+<li>Controller-3 (1.1.1.5) as dedicated Controller for the Core Region (0).  </li>
+<li>Controller-4 (1.1.1.6) is the default/flat existing Controller serving the whole overlay.  </li>
+</ul>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>The controllers have been pre-configured for this lab. This section is for your review of the workflow</p>
+</div>
+<ul>
+<li>
+<p>The controller is assigned to the region by configuring <strong>Region ID List</strong> on controller System feature template. </p>
+</li>
+<li>
+<p>Go to <strong>Configuration &gt; Template &gt; Feature Templates</strong>, type <strong>SYSTEM_FT</strong> in the seach field, and you will see 4 pre-configured Controllers feature templates, one for each controller.  </p>
+</li>
+</ul>
+<p><img alt="" src="../pic/task2-3-1.png" /></p>
+<ul>
+<li>
+<p>Click the <strong>Devices Attached</strong> of each controller system ft, you will see the controllers are attached to the feature templates as planned.  </p>
+<ul>
+<li>CONTROLLER-1_SYSTEM_FT for Controller-1 (1.1.1.3)  </li>
+<li>CONTROLLER-2_SYSTEM_FT for Controller-1 (1.1.1.4)  </li>
+<li>CONTROLLER-3_SYSTEM_FT for Controller-1 (1.1.1.5)  </li>
+<li>CONTROLLER-4_SYSTEM_FT for Controller-1 (1.1.1.6)  </li>
+</ul>
+</li>
+<li>
+<p>Click the <strong>...</strong> to view each of the controller system feature template.  </p>
+</li>
+</ul>
+<p>CONTROLLER-1_SYSTEM_FT<br />
+<img alt="" src="../pic/task2-3-2.png" />  </p>
+<p>CONTROLLER-2_SYSTEM_FT<br />
+<img alt="" src="../pic/task2-3-3.png" />  </p>
+<p>CONTROLLER-3_SYSTEM_FT<br />
+<img alt="" src="../pic/task2-3-4.png" />  </p>
+<p>CONTROLLER-4_SYSTEM_FT<br />
+<img alt="" src="../pic/task2-3-5.png" />  </p>
+<ul>
+<li>
+<p>After assigning distributed controllers for regions, all WAN Edges in the overlay remain un-assigned to any region, with **Controller-4(1.1.1.6) serving as the default controller for the entire overlay. You can verify that by checking the controller control connections of all WAN Edges.  </p>
+</li>
+<li>
+<p>Go to <strong>Monitor &gt; Devices</strong> and look the <strong>vSmart Control</strong> column.  </p>
+</li>
+</ul>
+<p><img alt="" src="../pic/task2-3-6.png" />  </p>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>If output shows <strong>0 control connection</strong>, please perform Rediscovery Network to show the correct outputs.  </p>
+</div>
+<ul>
+<li>You can also verify this by going to <strong>Monitor &gt; Devices</strong>; select a device and then look up for <strong>OMP peers</strong> with the <strong>Real Time</strong> function.  </li>
+</ul>
+<p>For instance, <strong>EDGE-BRANCH-3-01</strong> shows only one OMP peer with <strong>Controller-4</strong> showing Region ID as None.  </p>
+<p><img alt="" src="../pic/task2-3-7.png" />  </p>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            Back to top
+          </button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../task1/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Task 1 - Explore Flat Fabric Policy" rel="prev">
+            <div class="md-footer__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Task 1 - Explore Flat Fabric Policy
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../task3/" class="md-footer__link md-footer__link--next" aria-label="Next: Task 3 - Enable Migration Mode on Edge Routers" rel="next">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Task 3 - Enable Migration Mode on Edge Routers
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.top", "navigation.tabs", "navigation.path", "navigation.footer", "content.code.annotate"], "search": "../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.51198bba.min.js"></script>
+      
+    
+  </body>
+</html>
