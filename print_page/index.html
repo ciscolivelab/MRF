@@ -1,0 +1,2398 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      
+      <link rel="icon" href="../pic/cisco_logo.png">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.1.6">
+    
+    
+      
+        <title>Print Site - Cisco SD-WAN Multi-Region Fabric (MRF) Migration Lab</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.ded33207.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.a0c5b2b5.min.css">
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../css/print-site-enum-headings1.css">
+    
+      <link rel="stylesheet" href="../css/print-site-enum-headings2.css">
+    
+      <link rel="stylesheet" href="../css/print-site-enum-headings3.css">
+    
+      <link rel="stylesheet" href="../css/print-site-enum-headings4.css">
+    
+      <link rel="stylesheet" href="../css/print-site-enum-headings5.css">
+    
+      <link rel="stylesheet" href="../css/print-site-enum-headings6.css">
+    
+      <link rel="stylesheet" href="../css/print-site.css">
+    
+      <link rel="stylesheet" href="../css/print-site-material.css">
+    
+    <script>__md_scope=new URL("/",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  
+        <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded', function () {
+            remove_material_navigation();remove_mkdocs_theme_navigation();generate_toc();
+        })
+        </script>
+        </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="" data-md-color-accent="">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#about" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Cisco SD-WAN Multi-Region Fabric (MRF) Migration Lab" class="md-header__button md-logo" aria-label="Cisco SD-WAN Multi-Region Fabric (MRF) Migration Lab" data-md-component="logo">
+      
+  <img src="../pic/cisco_logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Cisco SD-WAN Multi-Region Fabric (MRF) Migration Lab
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Print Site
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../about/" class="md-tabs__link">
+      Home
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../topology/" class="md-tabs__link">
+      Lab Topology
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../access/" class="md-tabs__link">
+      Lab Crendential
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../task1/" class="md-tabs__link">
+        Lab Guide
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Cisco SD-WAN Multi-Region Fabric (MRF) Migration Lab" class="md-nav__button md-logo" aria-label="Cisco SD-WAN Multi-Region Fabric (MRF) Migration Lab" data-md-component="logo">
+      
+  <img src="../pic/cisco_logo.png" alt="logo">
+
+    </a>
+    Cisco SD-WAN Multi-Region Fabric (MRF) Migration Lab
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../about/" class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../topology/" class="md-nav__link">
+        Lab Topology
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../access/" class="md-nav__link">
+        Lab Crendential
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+          Lab Guide
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Lab Guide
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../task1/" class="md-nav__link">
+        Task 1 - Explore Flat Fabric Policy
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../task2/" class="md-nav__link">
+        Task 2 - Prepare MRF Migration
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../task3/" class="md-nav__link">
+        Task 3 - Enable Migration Mode on Edge Routers
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../task4/" class="md-nav__link">
+        Task 4 - Enable MRF on Border Routers
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../task5/" class="md-nav__link">
+        Task 5 - Enable MRF on Edge Routers
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../task6/" class="md-nav__link">
+        Task 6 - MRF Migration Clean Up
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../task7/" class="md-nav__link">
+        Task 7 - MRF Secondary Region
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../task8/" class="md-nav__link">
+        Task 8 - MRF Central Policy
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#about" class="md-nav__link">
+    1. Home
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#topology" class="md-nav__link">
+    2. Lab Topology
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#access" class="md-nav__link">
+    3. Lab Crendential
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#section-lab-guide" class="md-nav__link">
+    I. Lab Guide
+  </a>
+  
+    <nav class="md-nav" aria-label="I. Lab Guide">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#task1" class="md-nav__link">
+    4. Task 1 - Explore Flat Fabric Policy
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#task2" class="md-nav__link">
+    5. Task 2 - Prepare MRF Migration
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#task3" class="md-nav__link">
+    6. Task 3 - Enable Migration Mode on Edge Routers
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#task4" class="md-nav__link">
+    7. Task 4 - Enable MRF on Border Routers
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#task5" class="md-nav__link">
+    8. Task 5 - Enable MRF on Edge Routers
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#task6" class="md-nav__link">
+    9. Task 6 - MRF Migration Clean Up
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#task7" class="md-nav__link">
+    10. Task 7 - MRF Secondary Region
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#task8" class="md-nav__link">
+    11. Task 8 - MRF Central Policy
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<div id="print-site-page" class="print-site-enumerate-headings print-site-enumerate-figures">
+        <section class="print-page">
+            <div id="print-page-toc" data-toc-depth="3">
+                <nav role='navigation' class='print-page-toc-nav'>
+                <h1 class='print-page-toc-title'>Table of Contents</h1>
+                </nav>
+            </div>
+        </section>
+        <section class="print-page" id="about"><h1 id="about-home">Home</h1><h2 id="multi-region-fabric-mrf-overview">Multi-Region Fabric (MRF) Overview</h2>
+<p>The current Catalyst SDWAN architecture follows a flat overlay model, establishing site-to-site tunnels directly between sites. While this flat overlay model functions adequately in many scenarios, it does have its limitations:  </p>
+<ul>
+<li>Centralized control policy is necessary for Hub and Spoke topology or setting route preferences. Depending on the specific requirements of the topology, this policy can become quite complex.  </li>
+<li>Integrating transports from disparate providers for the underlay can be challenging. This is particularly relevant when attempting to leverage middle mile providers or cloud backbone providers' networks for inter-region traffic.  </li>
+<li>Large enterprises and managed service providers (MSPs) often require SDWAN to extend across multiple regions.  </li>
+</ul>
+<p>Now, with Multi-Region Fabric (MRF), it offers following enhancements  </p>
+<ul>
+<li>Foundational capability that underpins our journey to multi-cloud and SDCI  <ul>
+<li>Ensure market-leading scalability  </li>
+<li>Service enablement at gateway points</li>
+<li>Increase network resiliency  </li>
+</ul>
+</li>
+<li>Improve OMP to support a true scalable Multi-Region Fabric SD-WAN  </li>
+<li>3-level customer overlay  <ul>
+<li>Introduces Regions  </li>
+<li>Primary Access Region  </li>
+<li>Secondary Region  </li>
+<li>Subregion  </li>
+<li>Border routers provide tunnel stitching  </li>
+<li>Inter Regions always goes via border routers  </li>
+</ul>
+</li>
+<li>End to end SLA aware path computation  </li>
+<li>Simplifies user-visible configuration  </li>
+</ul>
+<h2 id="about-about-this-lab">About This Lab</h2>
+<p>This lab has been designed to showcase a comprehensive array of MRF features provided by the Cisco SD-WAN solution in a systematic manner. While a predefined topology is outlined and associated with each scenario, the lab instructions can also be tailored to the specific requirements of attendees. Participants can utilize the steps outlined in this lab to transition their flat fabric into an MRF.  </p>
+<p>Upon completing this lab, you will:  </p>
+<ul>
+<li>Gain insight into the intricacies of using the legacy approach to create and deploy hierarchical topologies within a flat Catalyst SD-WAN Fabric.  </li>
+<li>Successfully migrate from a flat Catalyst SD-WAN fabric to an MRF fabric with minimal disruption.  </li>
+<li>Understand the streamlined process for deploying a hierarchical topology using MRF fabric.  </li>
+<li>Understand and deploy MRF features such as 2nd region, transit gateway and MRF policy.  </li>
+</ul></section><section class="print-page" id="topology"><p>Network topology used in this lab are shown in below picture:  </p>
+<ul>
+<li>Regional Hub &amp; Spoke with BGP core  </li>
+</ul>
+<p><img alt="" src="../pic/topology-bgp.png" />  </p>
+<ul>
+<li>Multi-Region (MRF) SD-WAN Fanric  </li>
+</ul>
+<p><img alt="" src="../pic/topology-mrf.png" />  </p></section><section class="print-page" id="access"><p>Below table provides the IP addresses and credentials for the devices used in this lab:  </p>
+<ul>
+<li><strong>UI Connection Details</strong></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="center">Node</th>
+<th align="center">IP:Port</th>
+<th align="center">Username</th>
+<th align="center">Password</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">Manager</td>
+<td align="center">https://vmanage.dcloud.cisco.com:8443</td>
+<td align="center">admin</td>
+<td align="center">C1sco12345</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>SD-WAN Controllers</strong></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="center">Hostname</th>
+<th align="center">System IP</th>
+<th align="center">Site ID</th>
+<th align="center">Username</th>
+<th align="center">Password</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">Manager-1</td>
+<td align="center">1.1.1.1</td>
+<td align="center">1</td>
+<td align="center">admin</td>
+<td align="center">C1sco12345</td>
+</tr>
+<tr>
+<td align="center">Validator-1</td>
+<td align="center">1.1.1.2</td>
+<td align="center">1</td>
+<td align="center">admin</td>
+<td align="center">C1sco12345</td>
+</tr>
+<tr>
+<td align="center">Controller-1</td>
+<td align="center">1.1.1.3</td>
+<td align="center">1</td>
+<td align="center">admin</td>
+<td align="center">C1sco12345</td>
+</tr>
+<tr>
+<td align="center">Controller-2</td>
+<td align="center">1.1.1.4</td>
+<td align="center">1</td>
+<td align="center">admin</td>
+<td align="center">C1sco12345</td>
+</tr>
+<tr>
+<td align="center">Controller-3</td>
+<td align="center">1.1.1.5</td>
+<td align="center">1</td>
+<td align="center">admin</td>
+<td align="center">C1sco12345</td>
+</tr>
+<tr>
+<td align="center">Controller-4</td>
+<td align="center">1.1.1.6</td>
+<td align="center">1</td>
+<td align="center">admin</td>
+<td align="center">C1sco12345</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>SD-WAN Edges</strong></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="center">Hostname</th>
+<th align="center">System IP</th>
+<th align="center">Site ID</th>
+<th align="center">Username</th>
+<th align="center">Password</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">BR-WEST-1</td>
+<td align="center">1.1.201.1</td>
+<td align="center">201</td>
+<td align="center">admin</td>
+<td align="center">C1sco12345</td>
+</tr>
+<tr>
+<td align="center">BR-WEST-2</td>
+<td align="center">1.1.201.2</td>
+<td align="center">201</td>
+<td align="center">admin</td>
+<td align="center">C1sco12345</td>
+</tr>
+<tr>
+<td align="center">BR-EAST-1</td>
+<td align="center">1.1.202.1</td>
+<td align="center">202</td>
+<td align="center">admin</td>
+<td align="center">C1sco12345</td>
+</tr>
+<tr>
+<td align="center">BR-EAST-2</td>
+<td align="center">1.1.202.2</td>
+<td align="center">202</td>
+<td align="center">admin</td>
+<td align="center">C1sco12345</td>
+</tr>
+<tr>
+<td align="center">EDGE-HUB-1-01</td>
+<td align="center">1.1.10.1</td>
+<td align="center">1010</td>
+<td align="center">admin</td>
+<td align="center">C1sco12345</td>
+</tr>
+<tr>
+<td align="center">EDGE-HUB-1-02</td>
+<td align="center">1.1.10.2</td>
+<td align="center">1010</td>
+<td align="center">admin</td>
+<td align="center">C1sco12345</td>
+</tr>
+<tr>
+<td align="center">EDGE-HUB-2-01</td>
+<td align="center">1.1.20.1</td>
+<td align="center">1020</td>
+<td align="center">admin</td>
+<td align="center">C1sco12345</td>
+</tr>
+<tr>
+<td align="center">EDGE-HUB-2-02</td>
+<td align="center">1.1.20.2</td>
+<td align="center">1020</td>
+<td align="center">admin</td>
+<td align="center">C1sco12345</td>
+</tr>
+<tr>
+<td align="center">EDGE-BRANCH-3-01</td>
+<td align="center">1.1.30.1</td>
+<td align="center">3000</td>
+<td align="center">admin</td>
+<td align="center">C1sco12345</td>
+</tr>
+<tr>
+<td align="center">EDGE-BRANCH-4-01</td>
+<td align="center">1.1.40.1</td>
+<td align="center">4000</td>
+<td align="center">admin</td>
+<td align="center">C1sco12345</td>
+</tr>
+<tr>
+<td align="center">EDGE-BRANCH-4-02</td>
+<td align="center">1.1.40.2</td>
+<td align="center">4000</td>
+<td align="center">admin</td>
+<td align="center">C1sco12345</td>
+</tr>
+<tr>
+<td align="center">EDGE-BRANCH-5-01</td>
+<td align="center">1.1.50.1</td>
+<td align="center">5000</td>
+<td align="center">admin</td>
+<td align="center">C1sco12345</td>
+</tr>
+<tr>
+<td align="center">EDGE-BRANCH-6-01</td>
+<td align="center">1.1.60.1</td>
+<td align="center">6000</td>
+<td align="center">admin</td>
+<td align="center">C1sco12345</td>
+</tr>
+<tr>
+<td align="center">EDGE-BRANCH-7-01</td>
+<td align="center">1.1.70.1</td>
+<td align="center">7000</td>
+<td align="center">admin</td>
+<td align="center">admin</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>SD-WAN Edges - Interfaces  </li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="center">Hostname</th>
+<th align="center">Pub-Inet TLOC If</th>
+<th align="center">Pub-Inet IP Address</th>
+<th align="center">MPLS TLOC If</th>
+<th align="center">MPLS IP Address</th>
+<th align="center">Private1 TLOC If</th>
+<th align="center">Private1 IP Address</th>
+<th align="center">Private2 TLOC If</th>
+<th align="center">Private2 IP Address</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">BR-WEST-1</td>
+<td align="center">Gi2</td>
+<td align="center">124.124.124.2/24</td>
+<td align="center">Gi1</td>
+<td align="center">10.2.1.2/24</td>
+<td align="center">Gi3</td>
+<td align="center">172.16.1.1/24</td>
+<td align="center">Gi4</td>
+<td align="center">172.16.2.1/24</td>
+</tr>
+<tr>
+<td align="center">BR-WEST-2</td>
+<td align="center">Gi2</td>
+<td align="center">125.125.125.2/24</td>
+<td align="center">Gi1</td>
+<td align="center">10.2.2.2/24</td>
+<td align="center">Gi3</td>
+<td align="center">172.16.1.2/24</td>
+<td align="center">Gi4</td>
+<td align="center">172.16.2.2/24</td>
+</tr>
+<tr>
+<td align="center">BR-EAST-1</td>
+<td align="center">Gi2</td>
+<td align="center">131.131.131/2/24</td>
+<td align="center">Gi1</td>
+<td align="center">10.2.3.1/24</td>
+<td align="center">Gi3</td>
+<td align="center">172.16.1.3/24</td>
+<td align="center">Gi4</td>
+<td align="center">172.16.2.3/24</td>
+</tr>
+<tr>
+<td align="center">BR-EAST-2</td>
+<td align="center">Gi2</td>
+<td align="center">132.132.132.2/24</td>
+<td align="center">Gi1</td>
+<td align="center">10.2.4.1/24</td>
+<td align="center">Gi3</td>
+<td align="center">172.16.1.4/24</td>
+<td align="center">Gi4</td>
+<td align="center">172.16.2.4/24</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th align="center">Hostname</th>
+<th align="center">Pub-Inet TLOC If</th>
+<th align="center">Pub-Inet IP Address</th>
+<th align="center">MPLS TLOC If</th>
+<th align="center">MPLS IP Address</th>
+<th align="center">SVPN 10 If</th>
+<th align="center">SVPN 10 IP Address</th>
+<th align="center">SVPN 11 If</th>
+<th align="center">SVPN 11 IP Address</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">EDGE-DC-1-01</td>
+<td align="center">Gi1</td>
+<td align="center">126.126.126.2/24</td>
+<td align="center">Gi2</td>
+<td align="center">10.2.5.1/24</td>
+<td align="center">Gi3</td>
+<td align="center">10.10.1.1/24</td>
+<td align="center">Gi4</td>
+<td align="center">10.11.1.1/24</td>
+</tr>
+<tr>
+<td align="center">EDGE-DC-1-02</td>
+<td align="center">Gi1</td>
+<td align="center">128.128.128.2/24</td>
+<td align="center">Gi2</td>
+<td align="center">10.2.6.2/24</td>
+<td align="center">Gi3</td>
+<td align="center">10.10.1.2/24</td>
+<td align="center">Gi4</td>
+<td align="center">10.11.1.2/24</td>
+</tr>
+<tr>
+<td align="center">EDGE-DC-2-01</td>
+<td align="center">Gi1</td>
+<td align="center">129.129.129.2/24</td>
+<td align="center">Gi2</td>
+<td align="center">10.2.7.2/24</td>
+<td align="center">Gi3</td>
+<td align="center">10.20.1.1/24</td>
+<td align="center">Gi4</td>
+<td align="center">10.21.1.1/24</td>
+</tr>
+<tr>
+<td align="center">EDGE-DC-2-02</td>
+<td align="center">Gi1</td>
+<td align="center">130.130.130.2/24</td>
+<td align="center">Gi2</td>
+<td align="center">10.2.8.2/24</td>
+<td align="center">Gi3</td>
+<td align="center">10.20.1.2/24</td>
+<td align="center">Gi4</td>
+<td align="center">10.21.1.2/24</td>
+</tr>
+<tr>
+<td align="center">EDGE-BRANCH-3-01</td>
+<td align="center">Gi1</td>
+<td align="center">133.133.133.2/24</td>
+<td align="center">Gi2</td>
+<td align="center">10.2.9.2/24</td>
+<td align="center">Gi3</td>
+<td align="center">10.30.1.1/24</td>
+<td align="center">Gi4</td>
+<td align="center">10.31.1.1/24</td>
+</tr>
+<tr>
+<td align="center">EDGE-BRANCH-4-01</td>
+<td align="center">Gi1</td>
+<td align="center">144.144.144.2/24</td>
+<td align="center">Gi2</td>
+<td align="center">10.2.10.130/25</td>
+<td align="center">Gi3</td>
+<td align="center">10.40.1.1/24</td>
+<td align="center">Gi4</td>
+<td align="center">10.41.1.1/24</td>
+</tr>
+<tr>
+<td align="center">EDGE-BRANCH-4-02</td>
+<td align="center">Gi1</td>
+<td align="center">192.168.0.2/24</td>
+<td align="center">Gi2</td>
+<td align="center">10.2.10.2/25</td>
+<td align="center">Gi3</td>
+<td align="center">10.40.1.2/24</td>
+<td align="center">Gi4</td>
+<td align="center">10.41.1.2/24</td>
+</tr>
+<tr>
+<td align="center">EDGE-BRANCH-5-01</td>
+<td align="center">Gi1</td>
+<td align="center">145.145.145.2/24</td>
+<td align="center">Gi2</td>
+<td align="center">10.2.11.2/24</td>
+<td align="center">Gi3</td>
+<td align="center">10.50.1.129/25</td>
+<td align="center">Gi4</td>
+<td align="center">10.51.1.129/25</td>
+</tr>
+<tr>
+<td align="center">EDGE-BRANCH-6-01</td>
+<td align="center">Gi1</td>
+<td align="center">146.146.146.2/24</td>
+<td align="center">N/A</td>
+<td align="center">N/A</td>
+<td align="center">Gi2</td>
+<td align="center">10.60.1.1/24</td>
+<td align="center">Gi3</td>
+<td align="center">10.61.1.1/24</td>
+</tr>
+<tr>
+<td align="center">EDGE-BRANCH-7-01</td>
+<td align="center">N/A</td>
+<td align="center">N/A</td>
+<td align="center">Gi1</td>
+<td align="center">10.2.12.2/24</td>
+<td align="center">Gi2</td>
+<td align="center">10.70.1.129/25</td>
+<td align="center">Gi3</td>
+<td align="center">10.71.1.129/25</td>
+</tr>
+</tbody>
+</table></section>
+                        <h1 class='nav-section-title' id='section-lab-guide'>
+                            Lab Guide <a class='headerlink' href='#section-lab-guide' title='Permanent link'>↵</a>
+                        </h1>
+                        <section class="print-page" id="task1"><h1 id="task1-task-1-explore-flat-fabric-policy">Task 1 - Explore Flat Fabric Policy</h1><h3 id="tips-for-the-lab">Tips For The Lab</h3>
+<p>Use your browser Zoom In option to visualize better all images.  </p>
+<p><img alt="" src="../pic/task1-0-1.png" /></p>
+<p>Rediscovery Fabric Network to ensure all virtual nodes are reachable. Please inform the speaker if any virtual device appear as un-reachable.  </p>
+<p>Go to <strong>Tools &gt; Rediscovery Network</strong>, mark all the device checkboxes and click 'Rediscover'.  </p>
+<p><img alt="" src="../pic/task1-0-2.png" /> </p>
+<hr />
+<p>In this task you will review and understand the current active centralized policy that creates a Regional Hub &amp; Spoke topology. By default, SD-WAN solution builds a full mesh topology, any site will build tunnel with any other site. To build hub and spoke topology, or build regional hierarchy like we have in the lab, a centralized control policy is required.    </p>
+<h3 id="task1-step-1-review-existing-policy"><strong>Step 1: Review existing policy</strong></h3>
+<p>Once you have the RDP session to the remote workstation, open <strong>Chrome</strong> browser icon on the desktop.  </p>
+<ul>
+<li>
+<p>Enter <strong><a href="https://vmanage.dcloud.cisco.com:8443">https://vmanage.dcloud.cisco.com:8443</a></strong> in browser address bar; login with username <strong>admin</strong>, password <strong>C1sco12345</strong>.  </p>
+</li>
+<li>
+<p>Click SD-WAN Manager navagination bar, go to <strong>Configuration &gt; Policies</strong>. Locate pre-configured policy <strong>REGIONAL_HUB_AND_SPOKE_BGP_CORE_POLICY</strong>, click the <strong>...</strong> on the right and select <strong>Preview</strong>.  </p>
+</li>
+</ul>
+<p><img alt="" src="../pic/task1-1-1.png" /></p>
+<ul>
+<li>This <strong>REGIONAL_HUB_AND_SPOKE_BGP_CORE_POLICY</strong> adjusts the control plane to allow full-mesh intercommunication among all sites within the West region (Site ID 201,1010,1020,3000,4000,5000) while preventing direct connectivity to the East region. This is achieved by denying TLOCs and utilizing TLOC re-writes. The West Hub (Site 201) connects to the East Hub (Site 202) through the BGP core network using the service-side VPN.   </li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Refer to the Regional Hub &amp; Spoke with BGP Core topology diagram for further analysis.</p>
+</div>
+<ul>
+<li>As you can see it is a complex policy even for a very small environment with same two transports used everywhere.  </li>
+</ul>
+<div class="highlight"><pre><span></span><code>viptela-policy:policy
+ control-policy EAST-BRANCHES-SITES-CP
+    sequence 1
+     match tloc
+      site-list EAST-ALL-SITES
+     !
+     action accept
+     !
+    !
+    sequence 11
+     match route
+      site-list EAST-ALL-SITES
+      prefix-list _AnyIpv4PrefixList
+     !
+     action accept
+     !
+    !
+    sequence 21
+     match route
+      site-list WEST-ALL-SITES
+      prefix-list _AnyIpv4PrefixList
+     !
+     action accept
+      set
+       tloc-list EAST-HUB-TLOCS
+      !
+     !
+    !
+  default-action reject
+ !
+ control-policy BGP-CORE-EAST-HUB-CP
+    sequence 1
+     match tloc
+      site-list EAST-ALL-SITES
+     !
+     action accept
+     !
+    !
+    sequence 11
+     match route
+      site-list EAST-ALL-SITES
+      prefix-list _AnyIpv4PrefixList
+     !
+     action accept
+     !
+    !
+  default-action reject
+ !
+ control-policy BGP-CORE-WEST-HUB-CP
+    sequence 1
+     match tloc
+      site-list WEST-ALL-SITES
+     !
+     action accept
+     !
+    !
+    sequence 11
+     match route
+      site-list WEST-ALL-SITES
+      prefix-list _AnyIpv4PrefixList
+     !
+     action accept
+     !
+    !
+  default-action reject
+ !
+ control-policy WEST-BRANCHES-SITES-CP
+    sequence 1
+     match tloc
+      site-list WEST-ALL-SITES
+     !
+     action accept
+     !
+    !
+    sequence 11
+     match route
+      site-list WEST-ALL-SITES
+      prefix-list _AnyIpv4PrefixList
+     !
+     action accept
+     !
+    !
+    sequence 21
+     match route
+      site-list EAST-ALL-SITES
+      prefix-list _AnyIpv4PrefixList
+     !
+     action accept
+      set
+       tloc-list WEST-HUB-TLOCS
+      !
+     !
+    !
+  default-action reject
+ !
+ lists
+  site-list EAST-ALL-SITES
+   site-id 202 
+   site-id 6000-7000 
+  !
+  site-list EAST-BRANCHES
+   site-id 6000 
+   site-id 7000 
+  !
+  site-list EAST-HUB
+   site-id 202 
+  !
+  site-list WEST-ALL-SITES
+   site-id 201 
+   site-id 1010-1020 
+   site-id 3000-5000 
+  !
+  site-list WEST-BRANCHES
+   site-id 1010-1020 
+   site-id 3000 
+   site-id 4000 
+   site-id 5000 
+  !
+  site-list WEST-HUB
+   site-id 201 
+  !
+  tloc-list EAST-HUB-TLOCS
+   tloc 1.1.202.1 color public-internet encap ipsec 
+   tloc 1.1.202.1 color mpls encap ipsec 
+   tloc 1.1.202.2 color public-internet encap ipsec 
+   tloc 1.1.202.2 color mpls encap ipsec 
+  !
+  tloc-list WEST-HUB-TLOCS
+   tloc 1.1.201.1 color public-internet encap ipsec 
+   tloc 1.1.201.1 color mpls encap ipsec 
+   tloc 1.1.201.2 color public-internet encap ipsec 
+   tloc 1.1.201.2 color mpls encap ipsec 
+  !
+  prefix-list _AnyIpv4PrefixList
+   ip-prefix 0.0.0.0/0 le 32 
+  !
+ !
+!
+apply-policy
+ site-list WEST-BRANCHES
+  control-policy WEST-BRANCHES-SITES-CP out
+ !
+ site-list EAST-BRANCHES
+  control-policy EAST-BRANCHES-SITES-CP out
+ !
+ site-list EAST-HUB
+  control-policy BGP-CORE-EAST-HUB-CP out
+ !
+ site-list WEST-HUB
+  control-policy BGP-CORE-WEST-HUB-CP out
+ !
+!
+</code></pre></div>
+<h3 id="task1-step-2-review-bfd-tunnels"><strong>Step 2: Review BFD Tunnels</strong></h3>
+<p>Next, you'll examine the BFD tunnels from the spoke sites. A spoke site in west region, site 5000 will not have BFD tunnel to spoke sites in east region, such as site 6000, and site 7000.<br />
+You can either utilize the <strong>Manager Real Time UI option</strong> to confirm TLOCs and BFD sessions, or opt to SSH into the WAN Edges and execute command lines via an SSH terminal.<br />
+For SSH access, you can leverage <strong>mRemoteNG</strong> <img alt="" src="../pic/task2-1.png" title="mRemoteNG" />on your desktop.  </p>
+<ul>
+<li>
+<p>From the SD-WAN Manager navagination bar, click <strong>Monitor &gt; Device</strong>. Locate <strong>EDGE-BRANCH-3-01</strong>, click on the device and choose <strong>Real Time</strong> as shown in the screenshot below.  </p>
+</li>
+<li>
+<p>In the <strong>Device Options</strong> field, enter <strong>OMP Received TLOCS</strong>. As you can see, there are no TLOCs to any site in the East region and therefore no tunnels to any sites in the East region either.  </p>
+</li>
+</ul>
+<p><img alt="" src="../pic/task1-2-1.png" />  </p>
+<ul>
+<li>We can confirm this by looking for <strong>BFD Sessions</strong> in the Device Options field.  </li>
+</ul>
+<p><strong>We don’t see East TLOC’s IPs like 1.1.60.1, 1.1.70.1, 1.1.202.1 or 1.1.202.2 nor BFD tunnels against their Site IDs 202,6000 and 7000</strong>  </p>
+<p><img alt="" src="../pic/task1-2-2.png" />  </p>
+<h3 id="task1-step-3-review-ip-route"><strong>Step 3: Review IP Route</strong></h3>
+<p>Next, you'll examine the route tables from the spoke sites. A spoke site in west region (site 3000, 4000, 5000) doesn't have direct tunnel to spoke site in east region (site 6000,7000), but it learns east region spokes' prefixes with next hop pointing to west hubs (site 201).  </p>
+<ul>
+<li>In the <strong>Device Options</strong> field, enter <strong>IP route</strong>.  </li>
+<li>As you can see, even though it doesn't have tunnels towards the East sites, it has prefixes for such sites but pointing to the <strong>West Hubs (Site 201)</strong> TLOCs IPs instead of the originators.  </li>
+</ul>
+<p><img alt="" src="../pic/task1-3-1.png" />
+<img alt="" src="../pic/task1-3-2.png" />    </p>
+<h3 id="task1-step-4-review-path-between-spoke-sites"><strong>Step 4: Review Path between spoke sites</strong></h3>
+<p>To confirm the path for communication between spokes in different regions. Run traceroute and ping to test reachability of ubuntu hosts between branch sites in different regions.  </p>
+<ul>
+<li>Click <strong>mRemoteNG</strong> <img alt="" src="../pic/task2-1.png" title="mRemoteNG" /> on your desktop, select <strong>Site-3000-VPN-10-Ubun</strong> and open RDP session to the host with password <strong>C1sco12345</strong>. Run ping and traceroute to Ubuntu host in Site 6000 with IP <strong>10.60.1.101</strong>.   </li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Leave this ping running to identify any discruption during the migration in the incoming takss.</p>
+</div>
+<p><img alt="" src="../pic/task1-4-1.png" />  </p>
+<ul>
+<li>
+<p>From the trace above, even though site 3000 and site 6000 have the Public-Internet transport in common, they do not communicate directly to each other.<br />
+That is because the active Control Policy forces traffic going through the Hubs and then the BGP Core as highlighted in red in the trace.  </p>
+</li>
+<li>
+<p>Next, let's check the route table on West hub site <strong>BR-WEST-1</strong>. Go to the Manager GUI and then go to <strong>Monitor &gt; Devices &gt; BR-WEST-1 (1.1.201.1) &gt; Real Time</strong> and look up for IP route with the VPN 10 filter.  </p>
+</li>
+</ul>
+<p><img alt="" src="../pic/task1-4-2.png" /> 
+<img alt="" src="../pic/task1-4-3.png" />   </p>
+<ul>
+<li>As you see from the route table, the prefixes from East Regions are learned from BGP core. </li>
+</ul></section><section class="print-page" id="task2"><h1 id="task2-task-2-prepare-mrf-migration">Task 2 - Prepare MRF Migration</h1><p>In this task, you will perform the following prerequisites before migrating from flat SD-WAN fabric to MRF.  </p>
+<ul>
+<li>Enable MRF  </li>
+<li>Creat regions  </li>
+<li>Provision Controllers for regions  </li>
+</ul>
+<h3 id="task2-step-1-enable-mrf"><strong>Step 1: Enable MRF</strong></h3>
+<p>In this step, you will enable MRF on vManage.  </p>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p><strong>The MRF feature has been pre-enabled for this lab. This section is for your review of the workflow</strong> </p>
+</div>
+<ul>
+<li>Click SD-WAN Manager navagination bar, go to <strong>Administration &gt; Settings</strong>. and confirm that the Multi-Region Fabric setting is enabled (By default is disabled).  </li>
+</ul>
+<p><img alt="" src="../pic/task2-1-1.png" /></p>
+<h3 id="task2-step-2-create-regions"><strong>Step 2: Create Regions</strong></h3>
+<p>After enabling MRF, the subsequent step involves creating the regions.<br />
+For this lab, we'll establish two regions: <strong>EAST-REGION </strong>and <strong>WEST-REGION</strong>. Upon creation, the system automatically assigns a Region ID.<br />
+In this lab, WEST-REGION has been assigned with Region ID 1, and EAST-REGION has been assigned Region ID 2.  </p>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>The Regioins has been pre-enabled for this lab. This section is for your review of the workflow  </p>
+</div>
+<ul>
+<li>Go to <strong>Configuration &gt; Network Hierarchy</strong> and you should see that the <strong>EAST-REGION and WEST-REGION </strong>have been pre-configured.  </li>
+</ul>
+<p><img alt="" src="../pic/task2-2-1.png" /></p>
+<h3 id="task2-step-3-provision-controllers-for-regions"><strong>Step 3: Provision Controllers for Regions</strong></h3>
+<p>In MRF, vSmart controller is assigned to specific region. Based on the size of the deployment, the vSmart controller can be dedicated for a region or for a group of regions. For this lab, you will have controllers assigned as shown below:  </p>
+<ul>
+<li>Controller-1 (1.1.1.3) as dedicated Controller for WEST-REGION (1).  </li>
+<li>Controller-2 (1.1.1.4) as dedicated Controller for EAST-REGION (2).  </li>
+<li>Controller-3 (1.1.1.5) as dedicated Controller for the Core Region (0).  </li>
+<li>Controller-4 (1.1.1.6) is the default/flat existing Controller serving the whole overlay.  </li>
+</ul>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>The controllers have been pre-configured for this lab. This section is for your review of the workflow</p>
+</div>
+<ul>
+<li>
+<p>The controller is assigned to the region by configuring <strong>Region ID List</strong> on controller System feature template. </p>
+</li>
+<li>
+<p>Go to <strong>Configuration &gt; Template &gt; Feature Templates</strong>, type <strong>SYSTEM_FT</strong> in the seach field, and you will see 4 pre-configured Controllers feature templates, one for each controller.  </p>
+</li>
+</ul>
+<p><img alt="" src="../pic/task2-3-1.png" /></p>
+<ul>
+<li>
+<p>Click the <strong>Devices Attached</strong> of each controller system ft, you will see the controllers are attached to the feature templates as planned.  </p>
+<ul>
+<li>CONTROLLER-1_SYSTEM_FT for Controller-1 (1.1.1.3)  </li>
+<li>CONTROLLER-2_SYSTEM_FT for Controller-1 (1.1.1.4)  </li>
+<li>CONTROLLER-3_SYSTEM_FT for Controller-1 (1.1.1.5)  </li>
+<li>CONTROLLER-4_SYSTEM_FT for Controller-1 (1.1.1.6)  </li>
+</ul>
+</li>
+<li>
+<p>Click the <strong>...</strong> to view each of the controller system feature template.  </p>
+</li>
+</ul>
+<p>CONTROLLER-1_SYSTEM_FT<br />
+<img alt="" src="../pic/task2-3-2.png" />  </p>
+<p>CONTROLLER-2_SYSTEM_FT<br />
+<img alt="" src="../pic/task2-3-3.png" />  </p>
+<p>CONTROLLER-3_SYSTEM_FT<br />
+<img alt="" src="../pic/task2-3-4.png" />  </p>
+<p>CONTROLLER-4_SYSTEM_FT<br />
+<img alt="" src="../pic/task2-3-5.png" />  </p>
+<ul>
+<li>
+<p>After assigning distributed controllers for regions, all WAN Edges in the overlay remain un-assigned to any region, with **Controller-4(1.1.1.6) serving as the default controller for the entire overlay. You can verify that by checking the controller control connections of all WAN Edges.  </p>
+</li>
+<li>
+<p>Go to <strong>Monitor &gt; Devices</strong> and look the <strong>vSmart Control</strong> column.  </p>
+</li>
+</ul>
+<p><img alt="" src="../pic/task2-3-6.png" />  </p>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>If output shows <strong>0 control connection</strong>, please perform Rediscovery Network to show the correct outputs.  </p>
+</div>
+<ul>
+<li>You can also verify this by going to <strong>Monitor &gt; Devices</strong>; select a device and then look up for <strong>OMP peers</strong> with the <strong>Real Time</strong> function.  </li>
+</ul>
+<p>For instance, <strong>EDGE-BRANCH-3-01</strong> shows only one OMP peer with <strong>Controller-4</strong> showing Region ID as None.  </p>
+<p><img alt="" src="../pic/task2-3-7.png" />  </p></section><section class="print-page" id="task3"><h1 id="task3-task-3-enable-migration-mode-on-edge-routers">Task 3 - Enable Migration Mode on Edge Routers</h1><p>Enabling Migration Mode allows WAN Edges to participate in regional controllers while maintaining their current OMP peers with the default controllers. This must be enabled on all WAN Edges before the MRF migration.  </p>
+<p>In this task, you will enable Migration Mode on all Edge Routers for Site 1010, Site 1020, Site 3000, Site 4000, Site 5000, Site 6000, and Site 7000. In the next task, you will enable Migration Mode on all Border Routers.  </p>
+<h3 id="task3-step-1-create-new-systen-feature-template-for-west-edge-devices"><strong>Step 1: Create new Systen Feature Template for West Edge Devices</strong></h3>
+<ul>
+<li>Go to <strong>Configuration &gt; Templates &gt; Feature templates &gt; Add Template</strong>, select C8000v and Cisco System.</li>
+</ul>
+<p><img alt="" src="../pic/task3-1-1.png" /></p>
+<ul>
+<li>
+<p>Name it as <strong>cEDGE_EDGE-WEST_SYSTEM_FT</strong> and define only the next parameters as follows:</p>
+<ul>
+<li>Location: “Device Specific”</li>
+<li>Console Baud Rate: 115200</li>
+<li>Role: Edge Router</li>
+<li>Enable Migration Mode to Multi-Region Fabric: Enable</li>
+<li>Latitude: “Device Specific”</li>
+<li>Longitude: “Device Specific”</li>
+</ul>
+</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Location, Console Baud Rate, Latitude and Longitude parameters are not mandatory for MRF, however we define them for lab consistency.</p>
+</div>
+<p><img alt="" src="../pic/task3-1-2.png" /></p>
+<h3 id="task3-step-2-assign-feature-template-to-west-edge-devices"><strong>Step 2: Assign Feature Template to West Edge Devices</strong></h3>
+<p>Assign the System Feature template named <strong>cEDGE_EDGE-WEST_SYSTEM_FT</strong>, created in previouse step, to all West sites and the corresponding Device Templates, which are:</p>
+<ul>
+<li><strong>cEDGE_DC_DT</strong> </li>
+<li><strong>cEDGE_SITE-3000_DT</strong></li>
+<li><strong>cEDGE_SITE-4000_DT</strong></li>
+<li><strong>cEDGE_SITE-5000_DT</strong></li>
+</ul>
+<p><img alt="" src="../pic/task3-2-1.png" /></p>
+<ul>
+<li>The lab guide below shows the steps for <strong>cEDGE_DC_DT</strong> Device Template, and you need to repeat the steps for all other West Sites's device templates mentioned above.  </li>
+<li>Click on the 3 dots and then ‘edit’.</li>
+</ul>
+<p><img alt="" src="../pic/task3-2-2.png" /></p>
+<ul>
+<li>Next in ‘Cisco System’ select the <strong>cEDGE_EDGE-WEST_SYSTEM_FT</strong>.</li>
+</ul>
+<p><img alt="" src="../pic/task3-2-3.png" /></p>
+<ul>
+<li>Click ‘Update’ and you should see the next screen with all 4 DC devices with a little green checkmark.</li>
+</ul>
+<p><img alt="" src="../pic/task3-2-4.png" /></p>
+<ul>
+<li>Click ‘Next’ and should see the next configuration being applied to all 4 DC devices. </li>
+</ul>
+<p><img alt="" src="../pic/task3-2-5.png" /></p>
+<ul>
+<li>Finally click ‘Configure Devices’ to push the new configuration.</li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Repeat the above steps to apply the same new feature template to <strong>cEDGE_SITE-3000_DT</strong>, <strong>cEDGE_SITE-4000_DT</strong> and <strong>cEDGE_SITE-5000_DT</strong>.</p>
+</div>
+<h3 id="task3-step-3-create-new-systen-feature-template-for-east-edge-devices"><strong>Step 3: Create new Systen Feature Template for East Edge Devices</strong></h3>
+<ul>
+<li>Go to <strong>Configuration &gt; Templates &gt; Feature templates &gt; Add Template</strong>, select C8000v and Cisco System.</li>
+</ul>
+<p><img alt="" src="../pic/task3-4-1.png" /></p>
+<ul>
+<li>
+<p>Name it as <strong>cEDGE_EDGE-EAST_SYSTEM_FT</strong> and define only the next parameters as follows:</p>
+<ul>
+<li>Location: “Device Specific”</li>
+<li>Console Baud Rate: 115200</li>
+<li>Role: Edge Router</li>
+<li>Enable Migration Mode to Multi-Region Fabric: Enable</li>
+<li>Latitude: “Device Specific”</li>
+<li>Longitude: “Device Specific”</li>
+</ul>
+</li>
+</ul>
+<p><img alt="" src="../pic/task3-4-2.png" />
+<img alt="" src="../pic/task3-4-3b.png" /></p>
+<p>Click 'Save'.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Location, Console Baud Rate, Latitude and Longitude parameters are not mandatory for MRF, however we define them for lab consistency.</p>
+</div>
+<h3 id="task3-step-4-assign-feature-template-to-east-edge-devices"><strong>Step 4: Assign Feature Template to East Edge Devices</strong></h3>
+<p>Assign the System Feature template named <strong>cEDGE_EDGE-EAST_SYSTEM_FT</strong>, created in previouse step, to all East sites and the corresponding Device Templates, which are:</p>
+<ul>
+<li><strong>cEDGE_SITE-6000_DT</strong> </li>
+<li><strong>cEDGE_SITE-7000_DT</strong></li>
+</ul>
+<p><img alt="" src="../pic/task3-5-1.png" /></p>
+<ul>
+<li>The lab guide below shows the steps for <strong>cEDGE_SITE-6000_DT</strong> Device Template, and you need to repeat the steps for the other East Sites's device templates <strong>cEDGE_SITE-7000_DT</strong>.  </li>
+<li>Click on the 3 dots and then ‘edit’.</li>
+</ul>
+<p><img alt="" src="../pic/task3-5-2.png" /></p>
+<ul>
+<li>Next in Cisco System select the <strong>cEDGE_EDGE-EAST_SYSTEM_FT</strong></li>
+</ul>
+<p><img alt="" src="../pic/task3-5-3.png" /></p>
+<ul>
+<li>Click ‘Next’ and should see the next configuration being applied to the <strong>EDGE-BRANCH-6-01 (1.1.60.1)</strong>.  </li>
+<li>Finally click ‘Configure Devices’ to push the new configuration.</li>
+</ul>
+<p><img alt="" src="../pic/task3-5-4.png" /></p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Repeat the above steps to apply the same new feature template to <strong>cEDGE_SITE-7000_DT</strong>.  </p>
+</div>
+<h3 id="task3-step-5-validate-defaultflat-controller"><strong>Step 5: Validate default/flat Controller</strong></h3>
+<p>You have enabled Migration Mode on all Edge Routers, but since you have not assigned region for reach Edge Router yet, the Edge Router will only peer with default/flat controller.  </p>
+<ul>
+<li>
+<p>Now in Manager UI, go to <strong>Monitor &gt; Devices &gt; EDGE-BRANCH-3-01 &gt; Real Time</strong> and look up for <strong>OMP Peers</strong> in the search bar.</p>
+</li>
+<li>
+<p>As you can see the <strong>EDGE-BRANCH-3-01</strong> has only one OMP peer, which is with <strong>Controller-4 (1.1.1.6)</strong> serving as default/flat Controller for the entire overlay. Note that the <strong>Region ID</strong> is ‘None’; this will change in Task 5.</p>
+</li>
+</ul>
+<p><img alt="" src="../pic/task3-3-1.png" />  </p>
+<ul>
+<li>Verify <strong>OMP Peers</strong> from Edge Routers in EAST region and you will see only one OMP peer with the deault/flat controller.  </li>
+</ul></section><section class="print-page" id="task4"><h1 id="task4-task-4-enable-mrf-on-border-routers">Task 4 - Enable MRF on Border Routers</h1><p>In this task you will enable Migration Mode on all Border Routers. In addtion, you will apply BGP Migration Community and MRF on all Border Routers.</p>
+<p>This BGP Community is needed to avoid routing domain loops with the OMP prefixes on the Default/flat Controller being redistributed into the BGP Core and then re-originated and redistributed back again, but now to the Region-aware Controller as shown in the next Diagram. </p>
+<p>This is because Region-aware OMP routes are preferred over default region OMP routes. </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The BGP Community we will be using is 12 in an additive manner on all Border Routers and PE routers. The same community will be used for the for the OMP to BGP redistribution.  </p>
+</div>
+<p><img alt="" src="../pic/task4-0-1b.png" /></p>
+<h3 id="task4-step-1-enable-draft-mode-on-all-border-routers"><strong>Step 1: Enable "Draft Mode" on all Border Routers</strong></h3>
+<p>Enabling MRF on Border Router requires multiple feature templates changes, which are traffic disruptive. To mitigate the impact, you will enable “Draft Mode” on all Border routers at <strong>Site 201</strong> and <strong>Site 202</strong>. This will minimize the disruption that these changes might otherwise cause.  </p>
+<ul>
+<li>Go to <strong>Configuration &gt; Templates</strong> and enable “Draft Mode” on both <strong>cEDGE_SITE-201_DT</strong> and <strong>EDGE_SITE-202_DT</strong> device templates as follows.</li>
+</ul>
+<p><img alt="" src="../pic/task4-1-1.png" /></p>
+<p><img alt="" src="../pic/task4-1-2.png" /></p>
+<h2 id="task4-step-2-apply-bgp-migration-community"><strong>Step 2: Apply BGP Migration Community</strong></h2>
+<ul>
+<li>Go to <strong>Configuration &gt; Templates &gt; Feature Templates</strong>, look up for the <strong>cEDGE_HUB_VPN-10_BGP_FT</strong> feature template and edit it.</li>
+</ul>
+<p><img alt="" src="../pic/task4-2-1.png" /></p>
+<ul>
+<li>Make ‘Propagate Community’ Global on as shown below.</li>
+</ul>
+<p><img alt="" src="../pic/task4-2-2.png" /></p>
+<p>*Under ‘Unicast Address Family’, click on pencil icon to edit the OMP redistribution</p>
+<p><img alt="" src="../pic/task4-2-3.png" /></p>
+<ul>
+<li>Add <strong>MATCH-MIG-COMM</strong> as the Route Policy.</li>
+</ul>
+<p><img alt="" src="../pic/task4-2-4.png" /></p>
+<ul>
+<li>
+<p>Click 'Save Changes'.</p>
+</li>
+<li>
+<p>Now under the ‘Neighbor’ section and click on the pencil icon to edit it.</p>
+</li>
+</ul>
+<p><img alt="" src="../pic/task4-2-5.png" /></p>
+<ul>
+<li>Make ‘Route Policy Out’ Global "on" to enable out bound route policy. In the ‘Policy Name’ field enter route policy <strong>APPEND-MIG-COMM</strong> which is pre-configured on the localized policy for simplicity.</li>
+</ul>
+<p><img alt="" src="../pic/task4-2-6.png" /></p>
+<ul>
+<li>Click ‘Save Changes’, ‘Update’ then ‘Next’ and then ‘Configure Devices’ to generate the draft configurations for all four East and West border routers.</li>
+</ul>
+<p><img alt="" src="../pic/task4-2-7.png" /></p>
+<ul>
+<li>You should see these status and messages for the draft configuration generated for all 4 devices.</li>
+</ul>
+<p><img alt="" src="../pic/task4-2-8.png" /></p>
+<h2 id="task4-step-3-configure-mrf-on-west-border-routers"><strong>Step 3: Configure MRF on WEST Border Routers</strong></h2>
+<ul>
+<li>Go to <strong>Configuration &gt; Templates &gt; Feature Templates</strong> and create a new C8000v ‘Cisco System’ feature template and name it <strong>cEDGE_BORDER-WEST-201_SYSTEM_FT</strong></li>
+</ul>
+<p><img alt="" src="../pic/task4-3-1.png" /></p>
+<ul>
+<li>
+<p>Define all the next parameters as follows:</p>
+<ul>
+<li>Location: “Device Specific”</li>
+<li>Console Baud Rate: 115200</li>
+<li>Region: West-Region</li>
+<li>Role: Border Router</li>
+<li>Enable Migration Mode to Multi-Region Fabric: Enable from BGP Core</li>
+<li>Migration BGP Community: 12</li>
+<li>Latitude: “Device Specific”</li>
+<li>Longitude: “Device Specific”</li>
+</ul>
+</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Location, Console Baud Rate, Latitude and Longitude parameters are not mandatory for MRF, however we define them for lab consistency.  </p>
+</div>
+<p><img alt="" src="../pic/task4-3-2.png" /><br />
+<img alt="" src="../pic/task4-3-3b.png" /></p>
+<ul>
+<li>
+<p>Click ‘Save’.</p>
+</li>
+<li>
+<p>In Device Templates look up for the <strong>cEDGE_SITE-201_DT</strong> device template and click on edit</p>
+</li>
+</ul>
+<p><img alt="" src="../pic/task4-3-4.png" /></p>
+<ul>
+<li>In the ‘System’ section now select the <strong>cEDGE_BORDER-WEST-201_SYSTEM_FT</strong> we previously created, then click ‘update’ and push the change.  </li>
+<li>This will configure <strong>BR-WEST-1</strong> and <strong>BR-WEST-2</strong> as the border routers role facing the <strong>WEST-REGION</strong>.</li>
+</ul>
+<p><img alt="" src="../pic/task4-3-5.png" /></p>
+<ul>
+<li>Click ‘Update’, then ‘Next’ and confirm in the ‘Config Diff’ section that now both west hubs are assigned to <strong>WEST-REGION (1)</strong>, acting as <strong>Border Routers</strong> and with the migration mode <strong>enabled-from-bgp-core</strong>.  </li>
+<li>Finally click ‘Configure Devices’ to push the changes.</li>
+</ul>
+<p><img alt="" src="../pic/task4-3-6.png" /></p>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>Because the <strong>cEDGE_SITE-201_DT</strong> device template is still in draft mode, it won’t make any change until we disable draft mode.</p>
+</div>
+<h2 id="task4-step-4-configure-mrf-on-east-border-routers"><strong>Step 4: Configure MRF on EAST Border Routers</strong></h2>
+<p>Now, let’s repeat the same process for the East Border routers.  </p>
+<ul>
+<li>Go to <strong>Configuration &gt; Templates &gt; Feature Template</strong>, create a new C8000v ‘Cisco System’ feature template and name it <strong>cEDGE_BORDER-EAST-202_SYSTEM_FT</strong>.</li>
+</ul>
+<p><img alt="" src="../pic/task4-4-1.png" /></p>
+<ul>
+<li>
+<p>Define all the parameters as follows:</p>
+<ul>
+<li>Location: “Device Specific”</li>
+<li>Console Baud Rate: 115200</li>
+<li>Region: East-Region</li>
+<li>Role: Border Router</li>
+<li>Enable Migration Mode to Multi-Region Fabric: Enable from BGP Core</li>
+<li>Migration BGP Community: 12</li>
+<li>Latitude: “Device Specific”</li>
+<li>Longitude: “Device Specific”</li>
+</ul>
+</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Location, Console Baud Rate, Latitude and Longitude parameters are not mandatory for MRF, however we define them for lab consistency.  </p>
+</div>
+<p><img alt="" src="../pic/task4-4-2.png" /><br />
+<img alt="" src="../pic/task4-4-3b.png" /></p>
+<ul>
+<li>In Device Templates look up for the <strong>cEDGE_SITE-202_DT</strong> device template and click on ‘edit’</li>
+</ul>
+<p><img alt="" src="../pic/task4-4-4.png" /></p>
+<ul>
+<li>In the ‘System’ section now select the <strong>cEDGE_BORDER-EAST-202_SYSTEM_FT</strong> we previously created. This will configure <strong>BR-EAST-1</strong> and <strong>BR-EAST-2</strong> as the border routers role facing the <strong>EAST-REGION</strong>.</li>
+</ul>
+<p><img alt="" src="../pic/task4-4-5.png" /></p>
+<ul>
+<li>Click ‘Update’, then ‘Next’ and confirm in the ‘Config Diff’ section that now both west hubs are assigned to <strong>EAST-REGION (2)</strong>, acting as <strong>Border Routers</strong> and with the migration mode <strong>enabled-from-bgp-core</strong>.  </li>
+<li>Finally click ‘Configure Devices’ to push the changes.</li>
+</ul>
+<p><img alt="" src="../pic/task4-4-6.png" /></p>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>Because the <strong>cEDGE_SITE-202_DT</strong> device template is still in draft mode, it won’t make any change until we disable draft mode.  </p>
+</div>
+<ul>
+<li>Next enable the <strong>Private1</strong> TLOC as Core transport on all Border devices.  </li>
+<li>Go to <strong>Configuration &gt; Templates &gt; Feature Templates</strong>; look up for the feature template <strong>cEDGE_SITE-20X_VPN-0_PRIVATE1_CHILD-IF_FT</strong> which is shared by all Border devices, and edit it.  </li>
+</ul>
+<p><img alt="" src="../pic/task4-4-7.png" /></p>
+<ul>
+<li>Under the ‘Tunnel’ section, scroll down and under ‘advance options’ make Global on  the ‘Enable Core Region’ parameter.</li>
+</ul>
+<p><img alt="" src="../pic/task4-4-8.png" /></p>
+<ul>
+<li>Click ‘Update’, ‘Next’ and ‘Configure Devices’. This enables Private1 TLOC to service the Core Region.</li>
+</ul>
+<p><img alt="" src="../pic/task4-4-9.png" /></p>
+<ul>
+<li>Finally click ‘Configure Devices’ to push configuration change. Because all Border routers are in “Draft Mode”, it won’t make any change until we disable draft mode.</li>
+</ul>
+<h2 id="task4-step-5-disable-draft-mode-and-modify-control-policy"><strong>Step 5: Disable “Draft Mode” and Modify Control Policy</strong></h2>
+<ul>
+<li>Click <strong>mRemoteNG</strong> <img alt="" src="../pic/task2-1.png" title="mRemoteNG" /> on your desktop, select <strong>Site-3000-VPN-10-Ubun</strong> and open RDP session to the host with password <strong>C1sco12345</strong>. Run ping to Ubuntu host in Site 6000 with IP <strong>10.60.1.101</strong>.  </li>
+<li>
+<p>Leave the ping running for connectivity test to measure the impact for this change.  </p>
+</li>
+<li>
+<p>Go to <strong>Configuration &gt; Templates</strong> and click ‘Disable Draft Mode” for <strong>cEDGE_SITE-201_DT</strong> and <strong>EDGE_SITE-202_DT</strong> to push all configs you did in step 1 to 4.</p>
+</li>
+</ul>
+<p><img alt="" src="../pic/task4-5-1.png" /></p>
+<p>Then click ‘Disable” on the pop-up window, then ‘Next’ and finally click ‘Configure Devices’ to push all changes</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This change will cause a minor churn in the network, therefore try to disable “Draft Mode” as fast as possible on both device templates to diminish the impact.</p>
+</div>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>You can look the packet loss % of ping test running on the Ubuntu <strong>Site-3000-VPN-10-Ubun</strong> host in <strong>Site 3000</strong> </p>
+</div>
+<p>(<em> Repeat the same process to disable draft mode for </em><em>EDGE_SITE-202_DT</em>*.  )</p>
+<ul>
+<li>Verify the new OMP Peers on borders.  </li>
+<li>
+<p>Go to <strong>Monitor &gt; Devices &gt; BR-WEST-1 &gt; Real Time</strong> and look up for OMP Peers in the search bar.</p>
+</li>
+<li>
+<p>Because of the previous configurations on west hubs, you can see OMP session to <strong>Controller-1 (1.1.1.3)</strong> for <strong>WEST-REGION (1)</strong>, <strong>Controller-3 (1.1.1.5)</strong> for <strong>Core Region (0)</strong>  and the default/flat <strong>Controller-4 (1.1.1.6)</strong> that is being used for Migration.  </p>
+</li>
+</ul>
+<p><img alt="" src="../pic/task4-5-2.png" /></p>
+<ul>
+<li>Verify East Border devices, such as <strong>BR-EAST-1</strong> and you will see a similar OMP peering with the exception of the  <strong>Controller-2 (1.1.1.4)</strong> that serves the <strong>EAST-REGION (2)</strong>. </li>
+</ul>
+<p><img alt="" src="../pic/task4-5-3.png" />  </p>
+<ul>
+<li>
+<p>Now modify the Centralized Control Policy to allow the Border routers to receive the Private1 TLOCs of each other. This creates a fabric for the Core Region.  </p>
+</li>
+<li>
+<p>Go to <strong>Configuration &gt; Policies</strong> and activate the pre-configured <strong>OMP_CORE_TLOCS_POLICY</strong> Centralized Policy.  </p>
+</li>
+</ul>
+<p><img alt="" src="../pic/task4-5-4.png" /></p>
+<ul>
+<li>Click ‘Activate’.</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Review the Centralized Policy you just activated, where you now advertise the Core Private1 TLOCs between Border routers, besides its respective Regional Hub &amp; Spoke logic.</p>
+</div></section><section class="print-page" id="task5"><h1 id="task5-task-5-enable-mrf-on-edge-routers">Task 5 - Enable MRF on Edge Routers</h1><p>In this task, you will assign regions for the West and East Edge Routers in Site 1010, Site 1020, Site 3000, Site 4000, Site 5000, Site 6000, and Site 7000.</p>
+<p>In Task 3, you enabled migration mode on all Edge Routers without assigning a region. You verified that the Edge Routers only peer with the default/flat controller. After completing this task, you will see the Edge Routers form OMP peers with the new regional controller in addition to the existing OMP peer with the default/flat controller.  </p>
+<h3 id="task5-step-1-enable-region-on-west-edge-devices"><strong>Step 1: Enable Region on West Edge devices</strong></h3>
+<ul>
+<li>Go to <strong>Configuration &gt; Templates &gt; Feature templates</strong>; look up for the <strong>cEDGE_EDGE-WEST_SYSTEM_FT</strong> feature template we created in task 3 and edit it.</li>
+</ul>
+<p><img alt="" src="../pic/task5-1-1.png" /></p>
+<ul>
+<li>Make Global on the ‘Region’ parameter to assign all devices attached to this feature template to the <strong>WEST-REGION</strong>.  </li>
+<li>This will cause all devices in the West region to peer with the <strong>Controller-1 (1.1.1.3)</strong> for <strong>WEST-REGION (1)</strong>, in addition to peering with the default/flat <strong>Controller-4 (1.1.1.6)</strong> that's used for Migration.  </li>
+</ul>
+<p><img alt="" src="../pic/task5-1-2.png" /></p>
+<ul>
+<li>Click ‘Update’, then ‘Next’.</li>
+</ul>
+<p><img alt="" src="../pic/task5-1-3.png" />  </p>
+<ul>
+<li>Finally, click ‘Configure Devices’ to apply this change to all devices in the West Region. </li>
+</ul>
+<h3 id="task5-step-2-enable-region-on-east-edge-devices"><strong>Step 2: Enable Region on East Edge devices</strong></h3>
+<ul>
+<li>Repeat the same process for East Edge devices </li>
+<li>Go to <strong>Configuration &gt; Templates &gt; Feature templates</strong>; look up for the <strong>cEDGE_EDGE-EAST_SYSTEM_FT</strong> feature template and edit it.  </li>
+</ul>
+<p><img alt="" src="../pic/task5-2-1.png" /></p>
+<ul>
+<li>Make Global on the ‘Region’ parameter to assign all devices attached to this feature template to the <strong>EAST-REGION</strong>.  </li>
+<li>This enables all devices in the West region to peer to the <strong>Controller-1 (1.1.1.4)</strong> for <strong>EAST-REGION (2)</strong>, in addition to peering with the default/flat <strong>Controller-4 (1.1.1.6)</strong> that's used for Migration.  </li>
+</ul>
+<p><img alt="" src="../pic/task5-2-2.png" /></p>
+<ul>
+<li>Click ‘Update’, then ‘Next’.</li>
+</ul>
+<p><img alt="" src="../pic/task5-2-3.png" /></p>
+<ul>
+<li>Finally click ‘Configure Devices’ to apply this change to all devices in the East Region.  </li>
+</ul>
+<h3 id="task5-step-3-verify-omp-peers-on-edge-devices"><strong>Step 3: Verify OMP Peers on Edge Devices</strong></h3>
+<p>Remember in task3, after enabling migration mode on Edge devices, the Edge device still only peer with the default/flat <strong>Controller-4 (1.1.1.6)</strong>. Now, you should see the respect regional controller in addition to default/flat controller in OMP peer.  </p>
+<ul>
+<li>Go to <strong>Monitor &gt; Devices &gt; EDGE-BRANCH-3-01 &gt; Real Time</strong> and look up for <strong>OMP Peers</strong> in the search bar.  </li>
+</ul>
+<p><img alt="" src="../pic/task5-3-1.png" /></p>
+<ul>
+<li>Go to <strong>Monitor &gt; Devices &gt; EDGE-BRANCH-6-01 &gt; Real Time</strong> and look up for <strong>OMP Peers</strong> in the search bar.  </li>
+</ul>
+<p><img alt="" src="../pic/task5-3-2.png" /></p></section><section class="print-page" id="task6"><h1 id="task6-task-6-mrf-migration-clean-up">Task 6 - MRF Migration Clean Up</h1><p>Now that you have all Edge Routers and Border Routers peered with regional controllers, and completed the MRF migration. In this task you will clean up the temporary policy and disable migration mode.  </p>
+<p>After all devices are moved to MRF, the flat/default controller can be re-purposed to other region. In this lab, you will re-purpose Controller-4 to region 0's controller.  </p>
+<h3 id="task6-step-1-remove-route-map"><strong>Step 1: Remove route-map</strong></h3>
+<ul>
+<li>Go to <strong>Configuration &gt; Templates &gt; Feature templates</strong>, look up for <strong>cEDGE_HUB_VPN-10_BGP_FT</strong> and edit to remove route-map you completed in task 4.  </li>
+</ul>
+<p><img alt="" src="../pic/task6-1-1.png" />  </p>
+<ul>
+<li>Under <strong>UNICAST ADDRESS FAMILY</strong>, click pencil to edit the OMP redistribution policy.  </li>
+</ul>
+<p><img alt="" src="../pic/task6-1-2.png" />  </p>
+<ul>
+<li>Remove associated the route policy by changing it to default, and <strong>Save Changes</strong>  </li>
+</ul>
+<p><img alt="" src="../pic/task6-1-3.png" />  </p>
+<ul>
+<li>Under <strong>NEIGHBOR</strong> section, click pencil to edit the policy associate the BGP neighbor.  </li>
+</ul>
+<p><img alt="" src="../pic/task6-1-4.png" />  </p>
+<ul>
+<li>Remove associated outbound route policy by changing <strong>Route Policy Out</strong> to <strong>Off</strong>.  </li>
+</ul>
+<p><img alt="" src="../pic/task6-1-5.png" />  </p>
+<ul>
+<li>Click <strong>Save Changes</strong> then <strong>Update</strong> to trigger the configuration change. Click <strong>Configure Devices</strong> to remove the loop prevention BGP route policy you applied on task 4 on all 4 Border Routers.  </li>
+</ul>
+<h3 id="task6-step-2-disable-migration-mode"><strong>Step 2: Disable Migration Mode</strong></h3>
+<ul>
+<li>Go to <strong>Configuration &gt; Templates &gt; Feature templates</strong>, look up for <strong>cEDGE_BORDER-WEST-201_SYSTEM_FT</strong> and edit it.  </li>
+</ul>
+<p><img alt="" src="../pic/task6-2-1.png" />  </p>
+<ul>
+<li>Change <strong>Enable Migration Mode to Multi-Region Fabric</strong> field to <strong>Default</strong>. This will disable the migration mode and therefor the West Border router will keepthe OMP session to West Region aware <strong>controller-1 (1.1.1.3)</strong>, and the Core region <strong>Controller-3 (1.1.1.5)</strong>, but will remove the OMP peering to default/flat overlay <strong>Controller-4 (1.1.1.6)</strong> used for the migration.  </li>
+</ul>
+<p><img alt="" src="../pic/task6-2-2.png" />  </p>
+<ul>
+<li>Click <strong>Update</strong>, then <strong>Next</strong> and thenn <strong>Configure Devices</strong> to disable the migration mode on both West Border routers.</li>
+</ul>
+<p>Repeat the same process to disable <strong>Migration Mode</strong> for <strong>East Border</strong> routers.</p>
+<ul>
+<li>Go to <strong>Configuration &gt; Templates &gt; Feature templates</strong>, look up for <strong>cEDGE_BORDER-EAST-202_SYSTEM_FT</strong> and edit it.  </li>
+</ul>
+<p><img alt="" src="../pic/task6-2-3.png" />  </p>
+<ul>
+<li>Change <strong>Enable Migration Mode to Multi-Region Fabric</strong> field to <strong>Default</strong>. This will disable the migration mode and therefor the East Border router will keepthe OMP session to West Region aware <strong>controller-2 (1.1.1.4)</strong>, and the Core region <strong>Controller-3 (1.1.1.5)</strong>, but will remove the OMP peering to default/flat overlay <strong>Controller-4 (1.1.1.6)</strong> used for the migration.  </li>
+</ul>
+<p><img alt="" src="../pic/task6-2-4.png" />  </p>
+<ul>
+<li>Click <strong>Update</strong>, then <strong>Next</strong> and thenn <strong>Configure Devices</strong> to disable the migration mode on both East Border routers.</li>
+</ul>
+<p>Repeat the same process to disable <strong>Migration Mode</strong> for <strong>West Edge</strong> routers.  </p>
+<ul>
+<li>Go to <strong>Configuration &gt; Templates &gt; Feature templates</strong>, look up for <strong>cEDGE_EDGE-WEST_SYSTEM_FT</strong> and edit it.  </li>
+</ul>
+<p><img alt="" src="../pic/task6-2-5.png" />  </p>
+<ul>
+<li>Change <strong>Enable Migration Mode to Multi-Region Fabric</strong> field to <strong>Default</strong>. This will disable the migration mode and therefor the West Region Edge devices will keep the OMP session to West Region aware <strong>controller-1 (1.1.1.3)</strong>, and remove the OMP peering to default/flat overlay <strong>Controller-4 (1.1.1.6)</strong> used for the migration.  </li>
+</ul>
+<p><img alt="" src="../pic/task6-2-6.png" />  </p>
+<ul>
+<li>Click <strong>Update</strong>, then <strong>Next</strong> and thenn <strong>Configure Devices</strong> to disable the migration mode on all West Edge routers.   </li>
+</ul>
+<p>Repeat the same process to disable <strong>Migration Mode</strong> for <strong>East Edge</strong> routers.  </p>
+<ul>
+<li>Go to <strong>Configuration &gt; Templates &gt; Feature templates</strong>, look up for <strong>cEDGE_EDGE-EAST_SYSTEM_FT</strong> and edit it.  </li>
+</ul>
+<p><img alt="" src="../pic/task6-2-7.png" />  </p>
+<ul>
+<li>Change <strong>Enable Migration Mode to Multi-Region Fabric</strong> field to <strong>Default</strong>. This will disable the migration mode and therefor the East Region Edge devices will keep the OMP session to West Region aware <strong>controller-2 (1.1.1.4)</strong>, and remove the OMP peering to default/flat overlay <strong>Controller-4 (1.1.1.6)</strong> used for the migration.  </li>
+</ul>
+<p><img alt="" src="../pic/task6-2-8.png" />  </p>
+<ul>
+<li>Click <strong>Update</strong>, then <strong>Next</strong> and thenn <strong>Configure Devices</strong> to disable the migration mode on all East Edge routers.  </li>
+</ul>
+<h3 id="task6-step-3-re-purpose-default-controller"><strong>Step 3: Re-purpose default controller</strong></h3>
+<p>After disable migration mode on all border and Edge devices, the default/flat overlay <strong>Controller-4 (1.1.1.6)</strong> is no longer peering with any device. In this step, you will re-purpose reposition this controller to the Core region for redundancy.  </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This is an optional task.</p>
+</div>
+<ul>
+<li>Go to <strong>Configuration &gt; Templates &gt; Device Templates</strong>, look up for the device template of controller for core region <strong>CONTROLLER-3_DT</strong> and <strong>Attach Devices</strong>.  </li>
+</ul>
+<p><img alt="" src="../pic/task6-3-1.png" />  </p>
+<ul>
+<li>Select <strong>Controller-4</strong> from <strong>Available Devices</strong> window move it to <strong>Selected Devices</strong> window, then click 'Attach' and then 'Next'. </li>
+</ul>
+<p><img alt="" src="../pic/task6-3-2.png" />  </p>
+<ul>
+<li><strong>Configure Devices</strong> to push the configuration. This moves Controller-4 to Core region.  </li>
+</ul>
+<p><img alt="" src="../pic/task6-3-3.png" />  </p>
+<h3 id="task6-step-4-de-active-current-centralized-policy-and-remove-bgp-core"><strong>Step 4: De-active current Centralized Policy and remove BGP core</strong></h3>
+<p>As MRF by default makes inte-region connections via core region, the centralized policy configured in flat fabric becomes unnecessary. Let's deactive the current centralized policy and remove the BGP core between borders.  </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In this lab, no service in the core region hence you will remove the service VPN and BGP in core region.   </p>
+</div>
+<ul>
+<li>
+<p>Go to <strong>Configuration &gt; Policies</strong> and deactivate the current active Centralized Policy <strong>OMP_CORE_TLOCS_POLICY</strong>  </p>
+</li>
+<li>
+<p>Click <strong>Deactivate</strong> and <strong>Deactivate</strong> once again.  </p>
+</li>
+</ul>
+<p><img alt="" src="../pic/task6-4-1.png" />  </p>
+<ul>
+<li>
+<p>You can remove the BGP core by shutting down the service VPN 10 interfaces on all Hubs that were used for the BGP core. This ensures the inter-region communication uses the Fabric we created at the Core with the Private1 TLOCs.  </p>
+</li>
+<li>
+<p>Go to <strong>Configuration &gt; Templates &gt; Device Templates</strong>; look up for <strong>cEDGE_SITE-201_DT</strong> device template and now click on <strong>Change Device Values</strong>.  </p>
+</li>
+</ul>
+<p><img alt="" src="../pic/task6-4-2.png" />  </p>
+<ul>
+<li>
+<p>Scroll to the right and mark the checkbox or click on the three dots to shut down the <strong>VPN-10_CHILD_IF-1</strong> interfaces on both Border Routers <strong>BR-WEST-1</strong> and <strong>BR-WEST-2</strong>.  </p>
+</li>
+<li>
+<p>Click <strong>Next</strong> and then <strong>Configure Devices</strong>.  </p>
+</li>
+</ul>
+<p><img alt="" src="../pic/task6-4-3.png" />  </p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Repeat the same process for <strong>cEDGE_SITE-202_DT</strong> Device Template to shutdown VPN 10 interfaces on <strong>BR-EAST-1</strong> and <strong>BR-EAST-2</strong>.      </p>
+</div>
+<p>Now, Let's verify the connectivity between <strong>Site 3000</strong> and <strong>Site 6000</strong> from Ubuntu VM and check the path from traceroute.  </p>
+<ul>
+<li>
+<p>Open <strong>mRemoteNG</strong> RDP to host <strong>Site-3000-VPN-10-Ubun</strong>. Ping and trace the Ubuntu host located in <strong>Site 6000</strong> with IP <strong>10.60.1.101</strong>  </p>
+</li>
+<li>
+<p>As we can see below, both are still reachable and the traffic is still going through the Fabric we created in the Core, but now without a such complex Control Policy.  </p>
+</li>
+</ul>
+<p><img alt="" src="../pic/task6-4-4.png" />  </p>
+<div class="admonition success">
+<p class="admonition-title">Success</p>
+<h1 id="task6-congratulations-you-have-fully-migrated-your-overlay-from-a-regional-hub-spoke-using-control-policy-to-a-multi-region-fabric-without-control-policy"><strong>Congratulations, you have fully migrated your overlay from a Regional Hub &amp; Spoke using Control Policy to a Multi-Region Fabric without Control Policy.</strong></h1>
+</div></section><section class="print-page" id="task7"><h1 id="task7-task-7-mrf-secondary-region">Task 7 - MRF Secondary Region</h1><p>The Secondary Region is a feature within Multi-Region Fabric that provides a direct path between sites in different regions. Depending on the requirements, this path over 2nd region can serve as primary path between sites in different regions, or backup path or ECMP.  </p>
+<p>In this task you will create a Secondary Region between the <strong>West Site 5000</strong> and the <strong>East Sites 6000</strong> and <strong>7000</strong> as shown in the diagram below.</p>
+<p><img alt="" src="../pic/task7-0-1.png" /> </p>
+<ul>
+<li>First, RDP into the Ubuntu <strong>Site-5000-VPN-10-Ubun</strong> host in <strong>Site 5000</strong> using the <strong>mRemoteNG</strong> client and the ping and trace the IP <strong>10.60.1.101</strong> that lives in <strong>Site 6000</strong>.</li>
+</ul>
+<p><img alt="" src="../pic/task7-0-2.png" /> </p>
+<p>As you can see, it is reachable through the Fabric in the Core now.</p>
+<h3 id="task7-step-1-create-secondary-region"><strong>Step 1: Create Secondary Region</strong></h3>
+<ul>
+<li>Go to <strong>Configuration &gt; Network Hierarchy</strong> and in Global click on <strong>...</strong> and select ‘Add Node’.</li>
+</ul>
+<p><img alt="" src="../pic/task7-1-1.png" /> </p>
+<ul>
+<li>Select the <strong>Region</strong> Type and name it as <strong>SECONDARY-REGION</strong></li>
+</ul>
+<p><img alt="" src="../pic/task7-1-2.png" /> </p>
+<ul>
+<li>Click <strong>Add</strong>.  </li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>As with the primary West and East Region, now this Secondary region has been assigned with the Region ID 3 automatically by the system.</p>
+</div>
+<h3 id="task7-step-2-create-transport-interface-feature-templates-with-secondary-region"><strong>Step 2: Create Transport Interface Feature Templates with Secondary Region</strong></h3>
+<p>As you can see from the diagram above, the 2nd region will be enabled over both Piblic-Internet and MPLS transports. In this step, you will build two new feature templates for both transport interfaces with 2nd region enabled.  </p>
+<ul>
+<li>Go to <strong>Configuration &gt; Templates &gt; Feature Templates</strong> and look up for the existing <strong>cEDGE_SITE-ALL_VPN-0_PUB-INET_IF_FT</strong> feature template and click 'Copy' to clone it.</li>
+</ul>
+<p><img alt="" src="../pic/task7-2-1.png" /> </p>
+<ul>
+<li>Name it as <strong>cEDGE_SITE-PRI_AND_SEC-REGIONS_VPN-0_PUB-INET_IF_FT</strong> and click ‘Copy’</li>
+</ul>
+<p><img alt="" src="../pic/task7-2-2.png" /> </p>
+<ul>
+<li>Now, look up for the template you just created <strong>cEDGE_SITE-PRI_AND_SEC-REGIONS_VPN-0_PUB-INET_IF_FT</strong> and edit it.</li>
+</ul>
+<p><img alt="" src="../pic/task7-2-3.png" /> </p>
+<ul>
+<li>Go to the <strong>Tunnel</strong> section and under  <strong>‘Advanced Options’</strong>, enable ‘Secondary Region’ as <strong>Shared Between Primary and Secondary Regions</strong> and click ‘update’.</li>
+</ul>
+<p><img alt="" src="../pic/task7-2-4.png" /> </p>
+<ul>
+<li>
+<p>Click 'Update'.</p>
+</li>
+<li>
+<p>Go to <strong>Configuration &gt; Templates &gt; Feature</strong> and look up for the existing <strong>cEDGE_SITE-ALL_VPN-0_MPLS_IF_FT</strong> feature template to clone it.</p>
+</li>
+</ul>
+<p><img alt="" src="../pic/task7-2-5.png" /> </p>
+<ul>
+<li>Name it as <strong>cEDGE_SITE-PRI_AND_SEC_REGIONS_VPN-0_MPLS_IF_FT</strong></li>
+</ul>
+<p><img alt="" src="../pic/task7-2-6.png" /> </p>
+<ul>
+<li>
+<p>Click ‘Copy’.</p>
+</li>
+<li>
+<p>Now, look up again for the template you just created <strong>cEDGE_SITE-PRI_AND_SEC_REGIONS_VPN-0_MPLS_IF_FT</strong> and edit it.</p>
+</li>
+</ul>
+<p><img alt="" src="../pic/task7-2-8.png" /> </p>
+<ul>
+<li>Define the <strong>Interface Name</strong> as a variable (this because it will be used for Site7000 that uses a different interface for the MPLS TLOC).</li>
+</ul>
+<p><img alt="" src="../pic/task7-2-9.png" /> </p>
+<ul>
+<li>Go to the <strong>‘Tunnel’</strong> section and under <strong>‘Advanced Options’</strong>, enable ‘Secondary Region’ as <strong>Shared Between Primary and Secondary Regions</strong></li>
+</ul>
+<p><img alt="" src="../pic/task7-2-10.png" /> </p>
+<ul>
+<li>Click 'Update'.</li>
+</ul>
+<h3 id="task7-step-3-create-an-omp-feature-template-to-influenciate-the-omp-best-path-algorithm"><strong>Step 3: Create an OMP Feature Template to influenciate the OMP Best Path Algorithm</strong></h3>
+<p>By default, the path over 2nd region is prefered <strong>shorter path</strong>, because it provides the direct path for sites in different region. In this step, you will change this default behavior to allow equal cost multi path over direct path and core region path.  </p>
+<ul>
+<li>
+<p>Go to <strong>Configuration &gt; Templates &gt; Feature</strong> and let’s copy now the existing <strong>cEDGE_ALL_OMP_FT</strong> feature template. </p>
+</li>
+<li>
+<p>Name it as <strong>cEDGE_OMP_PRI_AND_SEC_REGIONS_FT</strong></p>
+</li>
+</ul>
+<p><img alt="" src="../pic/task7-3-1.png" /></p>
+<ul>
+<li>
+<p>Click ‘Copy’.</p>
+</li>
+<li>
+<p>Once created it look up for <strong>cEDGE_OMP_PRI_AND_SEC_REGIONS_FT</strong> and edit it.</p>
+</li>
+</ul>
+<p><img alt="" src="../pic/task7-3-2.png" /></p>
+<ul>
+<li>Go to the ‘Best Path’ section, and make Global on to enable the <strong>Ignore Region-Path Length During Best-Path Algorithm</strong> parameter, then click ‘update’. </li>
+</ul>
+<p><img alt="" src="../pic/task7-3-3.png" /></p>
+<ul>
+<li>Click 'Update'.  </li>
+</ul>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>The default value is Off, and by default, OMP gives preference to a direct tunnel path over a hierarchical path because the direct path has fewer hops.  </p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>With this configuration, we disable the comparison of the number of hops, OMP applies equal-cost multi-path routing (ECMP) to all routes, and packets can use all available paths.</strong>  </p>
+</div>
+<h3 id="task7-step-4-enable-secondary-region-for-site-5000"><strong>Step 4: Enable Secondary Region for Site 5000</strong></h3>
+<p>In this step, you will update the device templates and enable Secondary Region on Site 5000.</p>
+<ul>
+<li>
+<p>Modify the <strong>Cisco System</strong> Feature template currently used by the <strong>Site 5000</strong> edge router to participate in the secondary.  </p>
+</li>
+<li>
+<p>Go <strong>Configuration &gt; Templates &gt; Feature</strong> and look up for the <strong>cEDGE_EDGE-WEST_SYSTEM_FT</strong> and click <strong>‘Copy’</strong>  </p>
+</li>
+<li>
+<p>Name it as <strong>cEDGE_PRI_AND_SEC_REGIONS-WEST_SYSTEM_FT</strong>.  </p>
+</li>
+</ul>
+<p><img alt="" src="../pic/task7-4-1.png" /></p>
+<ul>
+<li>Click ‘Copy’.  </li>
+</ul>
+<p><img alt="" src="../pic/task7-4-2.png" /></p>
+<ul>
+<li>Look up for the <strong>cEDGE_PRI_AND_SEC_REGIONS-WEST_SYSTEM_FT</strong> feature template you just created and click ‘Edit’  </li>
+</ul>
+<p><img alt="" src="../pic/task7-4-3.png" /></p>
+<ul>
+<li>Make Global on the ‘Secondary Region’ parameter and select <strong>SECONDARY-REGION</strong> from the dropdown menu.</li>
+</ul>
+<p><img alt="" src="../pic/task7-4-4.png" /></p>
+<ul>
+<li>
+<p>Click ‘Update’ to save the changes.</p>
+</li>
+<li>
+<p>Go to <strong>Configuration &gt; Templates &gt; Device Templates</strong> look up for the <strong>cEDGE_SITE-5000_DT</strong> device template and edit it.  </p>
+</li>
+</ul>
+<p><img alt="" src="../pic/task7-5-1.png" /></p>
+<ul>
+<li>In the ‘Cisco System’ section, select the feature template we previously created named <strong>cEDGE_PRI_AND_SEC_REGIONS-WEST_SYSTEM_FT</strong></li>
+</ul>
+<p><img alt="" src="../pic/task7-5-2.png" /></p>
+<ul>
+<li>Under the ‘Cisco OMP’ section, select the <strong>cEDGE_OMP_PRI_AND_SEC_REGIONS_FT</strong> feature template we created in step 3.  </li>
+</ul>
+<p><img alt="" src="../pic/task7-5-3.png" /></p>
+<ul>
+<li>Under the ‘Transport &amp; Management VPN’ section, change the two Cisco VPN Interface Ethernet feature templates to the ones created in step 1 named <strong>cEDGE_SITE-PRI_AND_SEC-REGIONS_VPN-0_PUB-INET_IF_FT</strong> and <strong>cEDGE_SITE-PRI_AND_SEC_REGIONS_VPN-0_MPLS_IF_FT</strong> respectively.</li>
+</ul>
+<p><img alt="" src="../pic/task7-5-4.png" /></p>
+<ul>
+<li>Finally, click ‘Update’, and fill out the two new variables with <strong>GigabitEthernet2</strong> and <strong>10.2.11.2/24</strong> as shown below. </li>
+</ul>
+<p><img alt="" src="../pic/task7-5-6.png" /></p>
+<ul>
+<li>Click ‘Update’ and you should see in the ‘Config Diff’ section all the next lines in green color being pushed to the device if you scroll down. </li>
+</ul>
+<p><img alt="" src="../pic/task7-5-7.png" />
+<img alt="" src="../pic/task7-5-8.png" />
+<img alt="" src="../pic/task7-5-9.png" />
+<img alt="" src="../pic/task7-5-10.png" /></p>
+<ul>
+<li>After compare the diff, click ‘Configure Devices’ to push configuration.  </li>
+</ul>
+<h3 id="task7-step-5-enable-secondary-region-for-site-6000-and-7000"><strong>Step 5: Enable Secondary Region for Site 6000 and 7000</strong></h3>
+<p>In this step, you will update the device templates and enable Secondary Region on Site 6000 and site 7000. Again, for simplicity, let’s copy the ‘System’ Feature template currently used by the <strong>Site 6000</strong> and <strong>site 7000</strong> to participate in the secondary.  </p>
+<ul>
+<li>Go to <strong>Configuration &gt; Templates &gt; Feature</strong>; look up for the <strong>cEDGE_EDGE-EAST_SYSTEM_FT</strong> and click ‘Copy’.</li>
+</ul>
+<p><img alt="" src="../pic/task7-6-1.png" /></p>
+<ul>
+<li>Name it  <strong>cEDGE_PRI_AND_SEC_REGIONS-EAST_SYSTEM_FT</strong></li>
+</ul>
+<p><img alt="" src="../pic/task7-6-2.png" /></p>
+<ul>
+<li>Look up for <strong>cEDGE_PRI_AND_SEC_REGIONS-EAST_SYSTEM_FT</strong> feature template you just created and click ‘Edit’.</li>
+</ul>
+<p><img alt="" src="../pic/task7-6-3.png" /></p>
+<ul>
+<li>Make <strong>Global</strong> on the ‘Secondary Region’ parameter and select <strong>SECONDARY-REGION</strong> from the dropdown menu.</li>
+</ul>
+<p><img alt="" src="../pic/task7-6-4.png" /></p>
+<ul>
+<li>
+<p>Click ‘Update’.</p>
+</li>
+<li>
+<p>Update device template for Site 6000  </p>
+</li>
+<li>
+<p>Go to <strong>Configuration &gt; Templates &gt; Device Templates</strong>; look up for the <strong>cEDGE_SITE-6000_DT</strong> device template and edit it.</p>
+</li>
+</ul>
+<p><img alt="" src="../pic/task7-7-1.png" /></p>
+<ul>
+<li>Under ‘Cisco System' section select the feature template <strong>cEDGE_PRI_AND_SEC_REGIONS-EAST_SYSTEM_FT</strong>.</li>
+</ul>
+<p><img alt="" src="../pic/task7-7-2.png" /></p>
+<ul>
+<li>Under ‘Cisco OMP’ section, select the <strong>cEDGE_OMP_PRI_AND_SEC_REGIONS_FT</strong> feature template. </li>
+</ul>
+<p><img alt="" src="../pic/task7-7-3.png" /></p>
+<ul>
+<li>Under the ‘Transport &amp; Management VPN’ section, change the two Cisco VPN Interface Ethernet feature templates to the ones created in step 2 named <strong>cEDGE_SITE-PRI_AND_SEC-REGIONS_VPN-0_PUB-INET_IF_FT</strong></li>
+</ul>
+<p><img alt="" src="../pic/task7-7-4.png" /></p>
+<ul>
+<li>
+<p>Click ‘Update’, then ‘Next’.</p>
+</li>
+<li>
+<p>You should see the all the next lines in green color in the ‘Config Diff’ being pushed to the device if you scroll down.  </p>
+</li>
+</ul>
+<p><img alt="" src="../pic/task7-7-5.png" />
+<img alt="" src="../pic/task7-7-6.png" />
+<img alt="" src="../pic/task7-7-7.png" /></p>
+<ul>
+<li>
+<p>Click ‘Configure Devices’ to push the configuration after compare the diff.  </p>
+</li>
+<li>
+<p>Let’s repeat the same process to update device template for <strong>Site 7000</strong>.  </p>
+</li>
+<li>
+<p>Go to <strong>Configuration &gt; Templates &gt; Device Templates</strong>; look up for the <strong>cEDGE_SITE-7000_DT</strong> device template and edit.</p>
+</li>
+</ul>
+<p><img alt="" src="../pic/task7-8-1.png" /></p>
+<ul>
+<li>Under ‘Cisco System’ section select the <strong>cEDGE_PRI_AND_SEC_REGIONS-EAST_SYSTEM_FT</strong> feature template.</li>
+</ul>
+<p><img alt="" src="../pic/task7-8-2.png" /></p>
+<ul>
+<li>Under the ‘Cisco OMP’ section, select the <strong>cEDGE_OMP_PRI_AND_SEC_REGIONS_FT</strong> feature template.</li>
+</ul>
+<p><img alt="" src="../pic/task7-8-3.png" /></p>
+<ul>
+<li>Under the ‘Transport &amp; Management VPN’ section, change the two Cisco VPN Interface Ethernet feature templates to the ones created in step 2 named <strong>cEDGE_SITE-PRI_AND_SEC_REGIONS_VPN-0_MPLS_IF_FT</strong>.</li>
+</ul>
+<p><img alt="" src="../pic/task7-8-4.png" /></p>
+<ul>
+<li>Click ‘Update’, and fill out the two new variables with <strong>GigabitEthernet1</strong> and <strong>10.2.12.2/24</strong> as shown below.</li>
+</ul>
+<p><img alt="" src="../pic/task7-8-5.png" /></p>
+<ul>
+<li>Click ‘Update’ and you should see in the ‘Config Diff’ section all the next lines in green color being pushed to the device if you scroll down. </li>
+</ul>
+<p><img alt="" src="../pic/task7-8-6.png" />
+<img alt="" src="../pic/task7-8-7.png" />
+<img alt="" src="../pic/task7-8-8.png" /></p>
+<ul>
+<li>After compare the diff, click ‘Configure Devices’ to push configuration.</li>
+</ul>
+<h3 id="task7-step-6-make-controller-3-secondary-region-aware-and-validate"><strong>Step 6: Make Controller-3 Secondary Region-aware and Validate</strong></h3>
+<p>Sites <strong>Site 5000</strong>, <strong>Site 6000</strong> and <strong>Site 7000</strong> have been configured to participate in the <strong>SECONDARY-REGION (3)</strong>. However there is no controller for secondary region yet.  </p>
+<p>In this step, you will configure <strong>Controller-3 (1.1.1.5)</strong> for secondary region.  </p>
+<ul>
+<li>Go to <strong>Configuration &gt; Templates &gt; Feature Templates</strong> and look up for the <strong>CONTROLLER-3_SYSTEM_FT</strong> feature template and edit it.</li>
+</ul>
+<p><img alt="" src="../pic/task7-9-1.png" /></p>
+<ul>
+<li>In the ‘Region ID List’ parameter, add the <strong>SECONDARY-REGION</strong> to serve this region besides the Core Region.</li>
+</ul>
+<p><img alt="" src="../pic/task7-9-2.png" /></p>
+<ul>
+<li>Click ‘Update’, then ‘Next’ and you should see the next in the ‘Config Diff’.</li>
+</ul>
+<p><img alt="" src="../pic/task7-9-3.png" /></p>
+<ul>
+<li>Click ‘Configure Devices’ to push the configuration.  </li>
+</ul>
+<p>Now, Site 5000 has connectivity to Site 6000 and Site 7000, and vice versa, through the Core Fabric and the Direct Path over the secondary region.</p>
+<p>Because you enabled ‘Ignore Region-Path Length During Best-Path Algorithm’ on the new OMP template in step 1, the system uses ECMP over all available paths, including the direct path and the path over the core region. This is beneficial in use cases where the requirement is to send non-critical traffic using lower-cost WAN links instead of the optimized middle-mile WAN or PAYG links in the core region.  </p>
+<ul>
+<li>
+<p>Let's verify this from SDWAN manager.  </p>
+</li>
+<li>
+<p>Go to <strong>Monitor &gt; Devices &gt; EDGE-BRANCH-5-01</strong>  </p>
+</li>
+</ul>
+<p><img alt="" src="../pic/task7-9-6.png" />  </p>
+<ul>
+<li>Select <strong>Troubleshooting</strong> from the navigation panel on the left and then select <strong>Simulate Flows</strong>  </li>
+</ul>
+<p><img alt="" src="../pic/task7-9-7.png" />  </p>
+<ul>
+<li>In the <strong>Simulate Flows</strong> window, enter the following parameters for simulated flow.  <ul>
+<li>VPN : <strong>VPN- 10</strong></li>
+<li>Source/Interface for VPN - 10: <strong>GigabitEthernet3</strong>  </li>
+<li>Source IP: <strong>10.50.1.129</strong>  </li>
+<li>Destination IP: <strong>10.60.1.101</strong>  </li>
+</ul>
+</li>
+<li>Click <strong>Simulate</strong>, and you should see output similar to the screenshot below. </li>
+</ul>
+<p><img alt="" src="../pic/task7-9-8.png" />  </p>
+<ul>
+<li>
+<p>As you can see the output from simulated flow, there are multiple paths available from site 5000 to site 6000. You can try different IPs in site 6000 and or site 7000 and see what is the output.  </p>
+</li>
+<li>
+<p>We can also confirm this from CLI.  </p>
+</li>
+<li>Go to the mRemoteNG client and SSH into the <strong>EDGE-BRANCH-5-01</strong> and then issue the command <strong>show ip route vrf 10</strong>.</li>
+</ul>
+<p><img alt="" src="../pic/task7-9-4.png" /></p>
+<ul>
+<li>As we can see from the output, all prefixes from the <strong>East Region</strong> have <strong>3 TLOCs IP</strong> pointing to, two being through the <strong>West Border routers</strong>, and one being the <strong>Originator TLOC IP</strong> for the direct path.  </li>
+</ul></section><section class="print-page" id="task8"><h1 id="task8-task-8-mrf-central-policy">Task 8 - MRF Central Policy</h1><p>Another use case for secondary region is to set different preference for different VPNs. </p>
+<p>In this task you will create a Multi-Region Fabric (MRF) Control Policy that will steer VPN 11 traffic through the direct path over the Secondary Region while all other VPN 10 traffic will ECMP through all paths.</p>
+<h3 id="task8-step-1-create-a-new-control-policy"><strong>Step 1: Create a New Control Policy</strong></h3>
+<ul>
+<li>Go to <strong>Configuration &gt; Policies &gt; Add Policy</strong></li>
+</ul>
+<p><img alt="" src="../pic/task8-1-1.png" /></p>
+<ul>
+<li>On the left-side pane from the first section, select <strong>Region</strong> and then click ‘New Region List’</li>
+</ul>
+<p><img alt="" src="../pic/task8-1-2.png" /></p>
+<ul>
+<li>Name this Region List as <strong>ACCESS</strong> with the regions <strong>1,2</strong>.</li>
+</ul>
+<p><img alt="" src="../pic/task8-1-3.png" /></p>
+<ul>
+<li>
+<p>Click ‘Add’.</p>
+</li>
+<li>
+<p>Also, let’s create a Site List, so click on the left-side pane ‘Site’ and then ‘+ New Site List’.</p>
+</li>
+</ul>
+<p><img alt="" src="../pic/task8-1-4.png" /></p>
+<ul>
+<li>Name it as <strong>SECONDARY_REGION_SITES</strong> with the Sites <strong>5000,6000,7000</strong></li>
+</ul>
+<p><img alt="" src="../pic/task8-1-5.png" /></p>
+<ul>
+<li>
+<p>Click ‘Add’ and then ‘Next’. </p>
+</li>
+<li>
+<p>Now, click <strong>Add Topology</strong> and select <strong>Custom Control (Route &amp; Tloc)</strong></p>
+</li>
+</ul>
+<p><img alt="" src="../pic/task8-1-6.png" /></p>
+<ul>
+<li>Name this Control Policy as <strong>MRF_CP</strong>.</li>
+</ul>
+<p><img alt="" src="../pic/task8-1-7.png" /></p>
+<ul>
+<li>Click ‘+ Sequence Type’ and then select ‘TLOC’</li>
+</ul>
+<p><img alt="" src="../pic/task8-1-8.png" /></p>
+<ul>
+<li>Next, click on ‘+ Sequence Rule’, and select ‘Actions’ and finally enable ‘Accept’</li>
+</ul>
+<p><img alt="" src="../pic/task8-1-9.png" /></p>
+<ul>
+<li>
+<p>Click ‘Save Match and Actions’.</p>
+</li>
+<li>
+<p>Now, again click ‘+ Sequence Type’, but this time select ‘Route’</p>
+</li>
+</ul>
+<p><img alt="" src="../pic/task8-1-10.png" /></p>
+<ul>
+<li>Click on ‘+ Sequence Rule’, and under the ‘Match’ section, select ‘Region’ with the Region List <strong>ACCESS</strong></li>
+</ul>
+<p><img alt="" src="../pic/task8-1-11.png" /></p>
+<ul>
+<li>Also, add a match for ‘VPN’ for <strong>VPN ID 11</strong></li>
+</ul>
+<p><img alt="" src="../pic/task8-1-12.png" /></p>
+<ul>
+<li>Next, add one more match for ‘Path Type’ and select <strong>HIERARCHICAL</strong></li>
+</ul>
+<p><img alt="" src="../pic/task8-1-13.png" /></p>
+<ul>
+<li>Click ‘Actions’ and leave the ‘Reject’ option enabled.</li>
+</ul>
+<p><img alt="" src="../pic/task8-1-14.png" /></p>
+<ul>
+<li>
+<p>Click 'Save Match and Actions'</p>
+</li>
+<li>
+<p>Click ‘+ Sequence Rule’ to add another rule, and do not select any match.</p>
+</li>
+</ul>
+<p><img alt="" src="../pic/task8-1-15.png" /></p>
+<ul>
+<li>Next, click ‘Actions, and enable ‘Accept’.</li>
+</ul>
+<p><img alt="" src="../pic/task8-1-16.png" /></p>
+<ul>
+<li>
+<p>Click ‘Save Match and Actions’.</p>
+</li>
+<li>
+<p>Finally, click ‘Save Control Policy’.</p>
+</li>
+<li>
+<p>You will be returned to the next ‘Configure Topology and VPN Membership’ where now we can see the Control Policy we just created.</p>
+</li>
+</ul>
+<p><img alt="" src="../pic/task8-1-17.png" /></p>
+<ul>
+<li>
+<p>Click ‘Next’, and ‘Next’ once again till you get to the ‘Apply Policies to Sites and VPNs’ section.</p>
+</li>
+<li>
+<p>Name this Centralized Policy as <strong>MRF_POLICY</strong>, then click ‘+ New Site/Region List’ and enable ‘Region’ with <strong>ACCESS</strong> as the Outbound Region List as follows.</p>
+</li>
+</ul>
+<p><img alt="" src="../pic/task8-1-18.png" /></p>
+<ul>
+<li>Click 'Add'.</li>
+</ul>
+<p><img alt="" src="../pic/task8-1-19.png" /></p>
+<ul>
+<li>Finally click ‘Save Policy’.</li>
+</ul>
+<h3 id="task8-step-2-understand-activate-and-confirm-mrf-policy"><strong>Step 2: Understand, Activate and Confirm MRF Policy</strong></h3>
+<ul>
+<li>Before we activate this new MRF Policy, go to <strong>Configuration &gt; Policies</strong> and click ‘Preview’ on the MRF_POLICY policy we just created</li>
+</ul>
+<p><img alt="" src="../pic/task8-2-1.png" /></p>
+<ul>
+<li>The goal of the MRF Control Policy is to prevent the advertisement of prefixes from Access Regions 1 and 2 with a hierarchical path and to limit the prefixes from VPN 11 to Sites <strong>5000, 6000</strong>, and <strong>7000</strong> only.Try to understand the policy from preview.  </li>
+</ul>
+<p><img alt="" src="../pic/task8-2-2.png" /></p>
+<p>This is a good use-case example where we want VPN 10, which carries our critical corporate traffic, to use the Core or the direct path with ECMP. At the same time, we want to route our <strong>Guest Traffic</strong> in <strong>VPN 11</strong> through the direct path only at these sites with Secondary Regions, without affecting the rest of the access sites. This approach aims to reduce costs and bandwidth usage at the Core.  </p>
+<ul>
+<li>Activate the Policy the <strong>MRF_POLICY</strong> we just created.</li>
+</ul>
+<p><img alt="" src="../pic/task8-2-3.png" /></p>
+<ul>
+<li>
+<p>Click ‘Activate’ and ‘Activate’ once again.</p>
+</li>
+<li>
+<p>Now, SSH into <strong>EDGE-BRANCH-5-01</strong> and issue the show command <strong>show ip route vrf 10</strong>.</p>
+</li>
+</ul>
+<p><img alt="" src="../pic/task8-2-4.png" /></p>
+<ul>
+<li>
+<p>As we can see on the output above, we do have all prefixes from the East Region using all paths available for ECMP, being through the Core or through the Direct Path.</p>
+</li>
+<li>
+<p>Now, run the show command <strong>show ip route vrf 11</strong></p>
+</li>
+</ul>
+<p><img alt="" src="../pic/task8-2-5.png" /></p>
+<ul>
+<li>
+<p>As shown above, for <strong>VPN 11</strong>,  communication to the East Region is now only possible using the direct path as defined in the MRF Policy.  </p>
+</li>
+<li>
+<p>You can verify by running a trace from the <strong>Site-5000-VPN-10-Ubun</strong> Ubuntu host to the <strong>10.60.1.101</strong> that's in service <strong>VPN 10</strong> of <strong>Site 6000</strong>.  </p>
+</li>
+</ul>
+<p><img alt="" src="../pic/task8-2-6.png" /></p>
+<ul>
+<li>
+<p>Because the ECMP hash, the traffic is going through the Core but it may go through the Direct Path as well.</p>
+</li>
+<li>
+<p>Finally, let’s verify by running a trace from the <strong>Site-5000-VPN-11-Ubun</strong> Ubuntu host to the <strong>10.61.1.101</strong> that lives in service <strong>VPN 11</strong> of <strong>Site 6000</strong>.  </p>
+</li>
+</ul>
+<p><img alt="" src="../pic/task8-2-7.png" /></p>
+<div class="admonition success">
+<p class="admonition-title">Success</p>
+<h1 id="task8-congratulations-you-have-completed-the-whole-lab"><strong>Congratulations, you have completed the whole lab!!</strong></h1>
+</div></section><h1 class='nav-section-title-end'>Ended: Lab Guide</h1></div>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            Back to top
+          </button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "/", "features": ["navigation.top", "navigation.tabs", "navigation.path", "navigation.footer", "content.code.annotate"], "search": "../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.51198bba.min.js"></script>
+      
+        <script src="../js/print-site.js"></script>
+      
+    
+  </body>
+</html>
